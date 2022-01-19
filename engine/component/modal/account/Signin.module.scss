@@ -30,6 +30,7 @@ $sizeClose: 2.5;
         @include size($sizeClose + rem, $sizeClose + rem);
         color: white;
         background-color: red;
+        cursor: pointer;
       }
     }
     //form
