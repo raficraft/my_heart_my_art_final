@@ -2,9 +2,14 @@ import S from "./Signin.module.scss";
 import G from "./../../../../Sass/abstract/global.module.scss";
 import { useContext } from "react";
 import { ModalContext } from "../../../../context/modal/ModalProvider";
-
+import Link from "next/link";
+import { useRouter } from "next/router";
 function Signup() {
   const { closeModal } = useContext(ModalContext);
+
+  const router = useRouter();
+
+  console.log(router);
 
   function close_modals(e) {
     e.stopPropagation();

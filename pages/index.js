@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Link from "next/link";
 import { useContext } from "react";
 import { AuthContext } from "../context/auth/AuthProvider";
 import { LanguageContext } from "../context/language/LanguageContext";
@@ -6,7 +7,7 @@ import S from "./../Sass/Layout.module.scss";
 
 export default function Home() {
   const { lang } = useContext(LanguageContext);
-  const { auth } = useContext(AuthContext);
+  const { validAuth } = useContext(AuthContext);
 
   return (
     <>
@@ -21,14 +22,17 @@ export default function Home() {
           <h1>NEXT.JS Laboratoire [MAIN] and update to vercel Hosting</h1>
 
           <h1>Language {lang && lang}</h1>
-          {auth && (
+          <Link href="/admin">
+            <a>Admin</a>
+          </Link>
+          {validAuth && (
             <h1>
-              {!auth.isAuth && auth.role === 0 && lang === "FR"
-                ? " Vous n'êtes pas connecter , mais bonjour quand même visiteurs"
+              {!validAuth.isAuth && validAuth.role === 0 && lang === "FR"
+                ? "Bonjour visiteurs, vous n'êtes pas connecter"
                 : null}
 
-              {!auth.isAuth && auth.role === 0 && lang === "EN"
-                ? "You are not logged in, but hello guests anyway"
+              {!validAuth.isAuth && validAuth.role === 0 && lang === "EN"
+                ? "Hello Guest , you are not connected"
                 : null}
             </h1>
           )}

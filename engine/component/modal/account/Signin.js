@@ -2,6 +2,8 @@ import S from "./Signin.module.scss";
 import G from "./../../../../Sass/abstract/global.module.scss";
 import { useContext } from "react";
 import { ModalContext } from "../../../../context/modal/ModalProvider";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
 function Signin() {
   const { closeModal } = useContext(ModalContext);
@@ -14,6 +16,10 @@ function Signin() {
       closeModal();
     }
   }
+
+  const router = useRouter();
+  console.log(router);
+
   return (
     <section className={S.wrapper} onClick={(e) => close_modals(e)}>
       <div className={S.content}>

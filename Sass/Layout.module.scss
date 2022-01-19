@@ -8,6 +8,7 @@
 .wrapper {
   @include flex(column, wrap, center, center);
   flex: 1;
+  position: relative;
   .content {
     @include flex(column, wrap, center, center);
     padding: 2rem;

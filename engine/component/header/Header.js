@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { LanguageContext } from "../../../context/language/LanguageContext";
 import { ModalContext } from "../../../context/modal/ModalProvider";
+
 import S from "./Header.module.scss";
 
 function Header() {
