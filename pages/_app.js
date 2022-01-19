@@ -1,3 +1,4 @@
+import AuthProvider from "../context/auth/AuthProvider";
 import LanguageProvider from "../context/language/LanguageContext";
 import ModalProvider from "../context/modal/ModalProvider";
 import Layout from "../engine/component/Layout/Layout";
@@ -7,13 +8,15 @@ function MyApp({ Component, pageProps }) {
   console.log("pageprops ", pageProps);
 
   return (
-    <LanguageProvider>
-      <ModalProvider>
-        <Layout>
-          <Component {...pageProps} />;
-        </Layout>
-      </ModalProvider>
-    </LanguageProvider>
+    <AuthProvider>
+      <LanguageProvider>
+        <ModalProvider>
+          <Layout>
+            <Component {...pageProps} />;
+          </Layout>
+        </ModalProvider>
+      </LanguageProvider>
+    </AuthProvider>
   );
 }
 
