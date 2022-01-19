@@ -1,0 +1,15 @@
+@import "./function";
+@import "./variables";
+.bloc_input {
+  @include flex(column, nowrap, flex-start, flex-start);
+  margin: 0.5rem 0;
+  label {
+    font-weight: bold;
+    width: 100%;
+    margin: 0 0 0.5rem 0;
+  }
+  input {
+    height: 2rem;
+    width: 100%;
+  }
+}

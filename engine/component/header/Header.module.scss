@@ -1,0 +1,45 @@
+@import "./../../../Sass/abstract/function.scss";
+@import "./../../../Sass/abstract/variables.scss";
+
+.wrapper {
+  border-bottom: 8px solid rgb(187, 187, 187);
+  background-color: black;
+
+  .content {
+    padding: 0.5rem 2rem;
+    @include flex(row, wrap, space-between, center);
+    .title {
+      margin: 0;
+      color: $light;
+    }
+
+    .nav_right {
+      @include flex(row, wrap, space-between, center);
+
+      .select_lang {
+        margin: 0 2rem 0 0;
+      }
+
+      .user_account {
+        .btn {
+          margin: 0 1.5rem 0rem 0;
+          font-size: 1rem;
+          padding: 0.5rem;
+          border: none;
+          border-radius: 3px;
+          color: white;
+        }
+        .btn:last-child {
+          margin: 0;
+        }
+
+        .signup {
+          background-color: rgb(4, 213, 115);
+        }
+        .signin {
+          background-color: rgb(4, 122, 213);
+        }
+      }
+    }
+  }
+}
