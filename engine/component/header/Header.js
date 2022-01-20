@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { AuthContext } from "../../../context/auth/AuthProvider";
 import { LanguageContext } from "../../../context/language/LanguageContext";
 import { ModalContext } from "../../../context/modal/ModalProvider";
@@ -34,6 +34,8 @@ function Header() {
     }
   }
 
+  useEffect(() => {}, [validAuth.isAuthh]);
+
   //Conponenet
   console.log("render header");
   return (
@@ -59,29 +61,36 @@ function Header() {
             </select>
           </div>
 
-          {/* Signin and Signup btn */}
-
           <div className={S.user_account}>
-            <button
-              className={`${S.btn} ${S.signin}`}
-              onClick={() => handle_modal("signin")}
-            >
-              Connexion
-            </button>
-            {/* Close all modals btn */}
-            <button
-              className={`${S.btn} ${S.signup}`}
-              onClick={() => handle_modal("signup")}
-            >
-              inscription
-            </button>
+            {/* Signin and Signup btn */}
 
-            <button
-              className={`${S.btn} ${S.logout}`}
-              onClick={(e) => handleLogout(e)}
-            >
-              logout
-            </button>
+            {!validAuth.isAuth ? (
+              <>
+                <button
+                  className={`${S.btn} ${S.signin}`}
+                  onClick={() => handle_modal("signin")}
+                >
+                  Connexion
+                </button>
+                {/* Close all modals btn */}
+                <button
+                  className={`${S.btn} ${S.signup}`}
+                  onClick={() => handle_modal("signup")}
+                >
+                  inscription
+                </button>
+              </>
+            ) : (
+              <>
+                {/*Create User button to goes dashboard Pages*/}
+                <button
+                  className={`${S.btn} ${S.logout}`}
+                  onClick={(e) => handleLogout(e)}
+                >
+                  logout
+                </button>
+              </>
+            )}
           </div>
         </div>
       </div>

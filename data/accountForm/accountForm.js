@@ -1,17 +1,67 @@
 export const accoutForm = {
   signin: {
-    form: "",
-    email: "",
-    password: "",
-    createAccount: "",
-    button: "",
+    form: {
+      FR: "",
+      EN: "",
+    },
+    email: {
+      FR: "",
+      EN: "",
+    },
+    pwd: {
+      FR: "",
+      EN: "",
+    },
+    createAccount: {
+      FR: "",
+      EN: "",
+    },
+    button: {
+      FR: "",
+      EN: "",
+    },
   },
+
   signup: {
-    form: "",
-    email: "",
-    password: "",
-    confirmPsw: "",
-    alReadyAccount: "",
-    button: "",
+    form: {
+      FR: "",
+      EN: "",
+    },
+    email: {
+      FR: "",
+      EN: "",
+    },
+    pwd: {
+      FR: "",
+      EN: "",
+    },
+    confirmPwd: {
+      FR: "",
+      EN: "",
+    },
+    alReadyAccount: {
+      FR: "",
+      EN: "",
+    },
+    button: {
+      FR: "",
+      EN: "",
+    },
+  },
+};
+
+export const btnLogin = {
+  connect: {
+    FR: "Connexion",
+    EN: "Sign in",
+  },
+  subscrive: {
+    FR: "Inscription",
+    EN: "Sign up",
+  },
+
+  logout: {
+    FR: "Déconnexion",
+    EN: "Logout",
   },
 };

@@ -43,10 +43,7 @@ function Signup() {
     }
 
     try {
-      const cred = await signup(
-        inputs.current[0].value,
-        inputs.current[1].value
-      );
+      await signup(inputs.current[0].value, inputs.current[1].value);
       formRef.current.reset();
       setError("");
       closeModal();
@@ -89,8 +86,8 @@ function Signup() {
             <input type="text" ref={addInputs} name="email" id="email" />
           </div>
           <div className={G.bloc_input}>
-            <label htmlFor="psw">Password</label>
-            <input type="password" ref={addInputs} name="psw" id="psw" />
+            <label htmlFor="pwd">Password</label>
+            <input type="password" ref={addInputs} name="pwd" id="pwd" />
           </div>
 
           <div className={G.bloc_input}>

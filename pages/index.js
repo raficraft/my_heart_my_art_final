@@ -10,6 +10,8 @@ export default function Home() {
   const { validAuth, currentUser } = useContext(AuthContext);
 
   console.log("firebase user", currentUser);
+  console.log("Auth", validAuth);
+  console.log("lang", lang);
 
   return (
     <>
@@ -30,11 +32,15 @@ export default function Home() {
           {validAuth && (
             <h1>
               {!validAuth.isAuth && validAuth.role === 0 && lang === "FR"
-                ? "Bonjour visiteurs, vous n'êtes pas connecter"
+                ? "Bonjour visiteur, vous n'êtes pas connecter"
+                : validAuth.isAuth && validAuth.role === 0 && lang === "FR"
+                ? `Bonjour ${currentUser?.email}`
                 : null}
 
               {!validAuth.isAuth && validAuth.role === 0 && lang === "EN"
                 ? "Hello Guest , you are not connected"
+                : validAuth.isAuth && validAuth.role === 0 && lang === "EN"
+                ? `Hello ${currentUser?.email}`
                 : null}
             </h1>
           )}

@@ -69,14 +69,15 @@ function Signin() {
           onSubmit={(e) => {
             handleSubmit(e);
           }}
+          ref={formRef}
         >
           <div className={G.bloc_input}>
             <label htmlFor="email">E-mail</label>
             <input type="text" name="email" id="email" ref={addInputs} />
           </div>
           <div className={G.bloc_input}>
-            <label htmlFor="psw">Password</label>
-            <input type="password" name="psw" id="" psw ref={addInputs} />
+            <label htmlFor="pwd">Password</label>
+            <input type="password" name="pwd" id="pwd" ref={addInputs} />
           </div>
           <div className={S.errorMessage}>
             <p className={G.textWarning}>{error}</p>
