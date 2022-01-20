@@ -14,9 +14,6 @@ export default function AuthProvider({ children }) {
     isAuth: false,
     role: 0,
   });
-
-  console.log("???", auth);
-
   const [currentUser, setCurrentUser] = useState();
   const [loadingData, setLoadingData] = useState(true);
 
@@ -28,11 +25,13 @@ export default function AuthProvider({ children }) {
 
   //Login
   function signin(email, password) {
+    setValidAuth((s) => ({ ...s, isAuth: true }));
     return signInWithEmailAndPassword(auth, email, password);
   }
 
   //Logout
   function logout() {
+    setValidAuth((s) => ({ ...s, isAuth: false }));
     return auth.signOut(auth);
   }
 

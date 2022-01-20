@@ -1,13 +1,29 @@
 import S from "./Signin.module.scss";
 import G from "./../../../../Sass/abstract/global.module.scss";
-import { useContext } from "react";
+import { useContext, useState, useRef } from "react";
 import { useRouter } from "next/router";
 import { ModalContext } from "../../../../context/modal/ModalProvider";
 import { AuthContext } from "../../../../context/auth/AuthProvider";
+import { LanguageContext } from "../../../../context/language/LanguageContext";
+import { errorForm } from "../../../../data/errorForm/errorForm";
 
 function Signin() {
   const { closeModal } = useContext(ModalContext);
-  const { validAuth } = useContext(AuthContext);
+  const { validAuth, signin } = useContext(AuthContext);
+  const { lang } = useContext(LanguageContext);
+  const router = useRouter();
+
+  const [error, setError] = useState("");
+
+  const formRef = useRef();
+  const inputs = useRef([]);
+
+  const addInputs = (el) => {
+    if (el && !inputs.current.includes(el)) {
+      const name = el.getAttribute("name");
+      inputs.current.push(el);
+    }
+  };
 
   function close_modals(e) {
     e.stopPropagation();
@@ -16,7 +32,25 @@ function Signin() {
     }
   }
 
-  const router = useRouter();
+  async function handleSubmit(e) {
+    e.preventDefault();
+
+    try {
+      await signin(inputs.current[0].value, inputs.current[1].value);
+      formRef.current.reset();
+      setError("");
+      closeModal();
+    } catch (err) {
+      console.dir(err);
+      if (err.code === "auth/wrong-password") {
+        setError(errorForm.firebase.wrongPassword[lang]);
+      }
+
+      if (err.code === "auth/user-not-found") {
+        setError(errorForm.firebase.userNotFound[lang]);
+      }
+    }
+  }
 
   return (
     <section className={S.wrapper} onClick={(e) => close_modals(e)}>
@@ -30,14 +64,22 @@ function Signin() {
 
         {/*Form Signin*/}
 
-        <form className={S.account_user}>
+        <form
+          className={S.account_user}
+          onSubmit={(e) => {
+            handleSubmit(e);
+          }}
+        >
           <div className={G.bloc_input}>
-            <label>E-mail</label>
-            <input type="text" />
+            <label htmlFor="email">E-mail</label>
+            <input type="text" name="email" id="email" ref={addInputs} />
           </div>
           <div className={G.bloc_input}>
-            <label>Password</label>
-            <input type="text" />
+            <label htmlFor="psw">Password</label>
+            <input type="password" name="psw" id="" psw ref={addInputs} />
+          </div>
+          <div className={S.errorMessage}>
+            <p className={G.textWarning}>{error}</p>
           </div>
           <button>Connexion</button>
           <p>Vous avez déjà un compte ?</p>

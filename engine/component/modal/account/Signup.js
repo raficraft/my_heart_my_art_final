@@ -17,7 +17,6 @@ function Signup() {
   const [error, setError] = useState("");
 
   const formRef = useRef();
-
   const inputs = useRef([]);
 
   const addInputs = (el) => {
@@ -86,17 +85,22 @@ function Signup() {
           ref={formRef}
         >
           <div className={G.bloc_input}>
-            <label>E-mail</label>
-            <input type="text" ref={addInputs} name="email" />
+            <label htmlFor="email">E-mail</label>
+            <input type="text" ref={addInputs} name="email" id="email" />
           </div>
           <div className={G.bloc_input}>
-            <label>Password</label>
-            <input type="password" ref={addInputs} name="psw" />
+            <label htmlFor="psw">Password</label>
+            <input type="password" ref={addInputs} name="psw" id="psw" />
           </div>
 
           <div className={G.bloc_input}>
-            <label>Confirm Password</label>
-            <input type="password" ref={addInputs} name="confirmPsw" />
+            <label htmlFor="confirmPsw">Confirm Password</label>
+            <input
+              type="password"
+              ref={addInputs}
+              name="confirmPsw"
+              id="confirmPsw"
+            />
           </div>
           <div className={S.errorMessage}>
             <p className={G.textWarning}>{error}</p>
