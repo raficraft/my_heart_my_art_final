@@ -49,7 +49,7 @@ export default function AuthProvider({ children }) {
     <AuthContext.Provider
       value={{ validAuth, signup, signin, logout, currentUser }}
     >
-      {children}
+      {!loadingData && children}
     </AuthContext.Provider>
   );
 }
