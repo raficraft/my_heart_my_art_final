@@ -1,0 +1,24 @@
+.user_account {
+  .btn {
+    margin: 0 1.5rem 0rem 0;
+    font-size: 1rem;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 3px;
+    color: white;
+    cursor: pointer;
+  }
+  .btn:last-child {
+    margin: 0;
+  }
+
+  .signup {
+    background-color: rgb(4, 213, 115);
+  }
+  .signin {
+    background-color: rgb(4, 122, 213);
+  }
+  .logout {
+    background-color: red;
+  }
+}
