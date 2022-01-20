@@ -2,19 +2,62 @@
 @import "./../../../Sass/abstract/variables.scss";
 
 .wrapper {
-  border-bottom: 8px solid rgb(187, 187, 187);
-  background-color: black;
-
+  @include flex(row, nowrap, center, center);
+  background-color: rgb(255, 255, 255);
+  padding-top: calc(6 * #{$space});
+  padding-bottom: calc(3 * #{$space});
+  position: relative;
+  &:after {
+    margin: auto;
+    position: absolute;
+    content: "";
+    bottom: 0;
+    height: 1px;
+    width: $container_width;
+    background-color: $grey;
+  }
   .content {
-    padding: 0.5rem 2rem;
-    @include flex(row, wrap, space-between, center);
-    .title {
-      margin: 0;
-      color: $light;
+    width: $container_width;
+    @include flex(row, wrap, flex-start, center);
+
+    .home_button {
+      transition: $shortTime;
+      position: relative;
+      padding-right: calc(2 * #{$space});
+
+      &:hover svg {
+        color: $red;
+        transform: scale(1.05);
+      }
+
+      svg {
+        font-size: 3rem;
+        color: $blue;
+        width: 2rem;
+        height: 2rem;
+      }
+      &:after {
+        @include emptyContent;
+        width: 1px;
+        height: 100%;
+        background-color: $grey;
+        right: 0;
+      }
+    }
+
+    .nav_top {
+      background-color: antiquewhite;
+      @include flex(row, wrap, flex-start, center);
+      a {
+        margin: 0 calc(3 * #{$space});
+        font-weight: bold;
+      }
     }
 
     .nav_right {
-      @include flex(row, wrap, space-between, center);
+      @include flex(row, wrap, flex-end, center);
+      flex: 1;
+      background-color: cornflowerblue;
 
       .select_lang {
         margin: 0 2rem 0 0;

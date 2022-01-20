@@ -52,16 +52,16 @@ export const accoutForm = {
 
 export const btnLogin = {
   connect: {
-    FR: "Connexion",
+    FR: "Se connecter",
     EN: "Sign in",
   },
   subscrive: {
-    FR: "Inscription",
+    FR: "S'inscrire",
     EN: "Sign up",
   },
 
   logout: {
-    FR: "Déconnexion",
+    FR: "Se déconnecter",
     EN: "Logout",
   },
 };

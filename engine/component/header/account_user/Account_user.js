@@ -29,7 +29,7 @@ export default function Account_user() {
     }
   }
 
-  useEffect(() => {}, validAuth.isAuth);
+  useEffect(() => {}, [validAuth.isAuth]);
 
   return (
     <div className={S.user_account}>
@@ -38,18 +38,18 @@ export default function Account_user() {
       {!validAuth.isAuth ? (
         <>
           <button
+            className={`${S.btn} ${S.signup}`}
+            onClick={() => handle_modal("signup")}
+          >
+            inscription
+          </button>
+          <button
             className={`${S.btn} ${S.signin}`}
             onClick={() => handle_modal("signin")}
           >
             Connexion
           </button>
           {/* Close all modals btn */}
-          <button
-            className={`${S.btn} ${S.signup}`}
-            onClick={() => handle_modal("signup")}
-          >
-            inscription
-          </button>
         </>
       ) : (
         <>
