@@ -61,6 +61,14 @@ $sizeClose: 2.5;
         margin: auto;
         cursor: pointer;
       }
+
+      .errorMessage {
+        @include flex(row, wrap, center, center);
+
+        p {
+          text-align: center;
+        }
+      }
     }
   }
 }

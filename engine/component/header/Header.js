@@ -1,30 +1,38 @@
+import Link from "next/link";
 import { useContext } from "react";
+import { AuthContext } from "../../../context/auth/AuthProvider";
 import { LanguageContext } from "../../../context/language/LanguageContext";
 import { ModalContext } from "../../../context/modal/ModalProvider";
 
 import S from "./Header.module.scss";
 
 function Header() {
-  console.log(S);
-
   const { openModal } = useContext(ModalContext);
   const { lang, change_lang } = useContext(LanguageContext);
+  const { validAuth, logout } = useContext(AuthContext);
 
+  //Manage Modal
   function handle_modal(modal) {
-    console.log("lol");
     openModal(modal);
   }
 
+  //Manage Lang
   function handle_lang(e) {
-    console.log(e);
-    console.log(e.target.value);
     change_lang(e.target.value);
   }
+  //firebase logout
+  function handleLogout(e) {}
 
+  //Conponenet
+  console.log("render header");
   return (
     <header className={S.wrapper}>
       <div className={S.content}>
-        <h1 className={S.title}>My heart in my art</h1>
+        <Link href="/">
+          <a>
+            <h1 className={S.title}>My heart in my art</h1>
+          </a>
+        </Link>
 
         <div className={S.nav_right}>
           {/* Change language */}
@@ -55,6 +63,13 @@ function Header() {
               onClick={() => handle_modal("signup")}
             >
               inscription
+            </button>
+
+            <button
+              className={`${S.btn} ${S.logout}`}
+              onClick={(e) => handleLogout(e)}
+            >
+              logout
             </button>
           </div>
         </div>

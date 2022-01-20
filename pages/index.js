@@ -1,9 +1,9 @@
+import S from "./../Sass/Layout.module.scss";
 import Head from "next/head";
 import Link from "next/link";
 import { useContext } from "react";
 import { AuthContext } from "../context/auth/AuthProvider";
 import { LanguageContext } from "../context/language/LanguageContext";
-import S from "./../Sass/Layout.module.scss";
 
 export default function Home() {
   const { lang } = useContext(LanguageContext);

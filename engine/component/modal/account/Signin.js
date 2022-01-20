@@ -1,24 +1,22 @@
 import S from "./Signin.module.scss";
 import G from "./../../../../Sass/abstract/global.module.scss";
 import { useContext } from "react";
-import { ModalContext } from "../../../../context/modal/ModalProvider";
-import Link from "next/link";
 import { useRouter } from "next/router";
+import { ModalContext } from "../../../../context/modal/ModalProvider";
+import { AuthContext } from "../../../../context/auth/AuthProvider";
 
 function Signin() {
   const { closeModal } = useContext(ModalContext);
+  const { validAuth } = useContext(AuthContext);
 
   function close_modals(e) {
-    e.preventDefault();
     e.stopPropagation();
-    console.log("close");
     if (e.target === e.currentTarget) {
       closeModal();
     }
   }
 
   const router = useRouter();
-  console.log(router);
 
   return (
     <section className={S.wrapper} onClick={(e) => close_modals(e)}>
