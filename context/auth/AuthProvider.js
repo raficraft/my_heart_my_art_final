@@ -32,12 +32,12 @@ export default function AuthProvider({ children }) {
   //Logout
   function logout() {
     setValidAuth((s) => ({ ...s, isAuth: false }));
-    return auth.signOut(auth);
+    return signOut(auth);
   }
 
   useEffect(() => {
     setValidAuth((s) => ({ ...s, isAuth: false, role: 0 }));
-    const unsubscribe = auth.onAuthStateChanged((user) => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
       setCurrentUser(user);
       setLoadingData(false);
     });

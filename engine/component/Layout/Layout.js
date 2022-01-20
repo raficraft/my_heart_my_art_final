@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from "react";
+import React, { useContext } from "react";
 import Header from "../header/Header";
 import Signup from "../modal/account/Signup";
 import Signin from "../modal/account/Signin";
