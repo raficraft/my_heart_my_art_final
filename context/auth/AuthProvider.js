@@ -33,19 +33,23 @@ export default function AuthProvider({ children }) {
 
   //Logout
   function logout() {
-    return auth.signOut();
+    return auth.signOut(auth);
   }
 
   useEffect(() => {
+    setValidAuth((s) => ({ ...s, isAuth: false, role: 0 }));
     const unsubscribe = auth.onAuthStateChanged((user) => {
       setCurrentUser(user);
+      setLoadingData(false);
     });
 
     return unsubscribe;
   }, []);
 
   return (
-    <AuthContext.Provider value={{ validAuth, signup, signin, logout }}>
+    <AuthContext.Provider
+      value={{ validAuth, signup, signin, logout, currentUser }}
+    >
       {children}
     </AuthContext.Provider>
   );

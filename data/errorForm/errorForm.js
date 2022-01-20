@@ -12,5 +12,9 @@ export const errorForm = {
       FR: "Password de 6 caractères minimum",
       EN: "Password at least 6 characters",
     },
+    logoutFailed: {
+      FR: "Pour une raison quelconque, nous ne pouvons pas nous déconnecter, veuillez vérifier votre connexion Internet et réessayer",
+      EN: "For some reason , we can't deconnect, please check your internet connexion and retry",
+    },
   },
 };

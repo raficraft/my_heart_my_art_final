@@ -1,8 +1,10 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useContext } from "react";
 import { AuthContext } from "../../../context/auth/AuthProvider";
 import { LanguageContext } from "../../../context/language/LanguageContext";
 import { ModalContext } from "../../../context/modal/ModalProvider";
+import { errorForm } from "../../../data/errorForm/errorForm";
 
 import S from "./Header.module.scss";
 
@@ -10,6 +12,8 @@ function Header() {
   const { openModal } = useContext(ModalContext);
   const { lang, change_lang } = useContext(LanguageContext);
   const { validAuth, logout } = useContext(AuthContext);
+
+  const router = useRouter();
 
   //Manage Modal
   function handle_modal(modal) {
@@ -21,7 +25,14 @@ function Header() {
     change_lang(e.target.value);
   }
   //firebase logout
-  function handleLogout(e) {}
+  async function handleLogout(e) {
+    try {
+      await logout();
+      router.push("/");
+    } catch (error) {
+      alert(errorForm.firebase.logoutFailed[lang]);
+    }
+  }
 
   //Conponenet
   console.log("render header");

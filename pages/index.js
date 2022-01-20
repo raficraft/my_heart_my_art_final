@@ -7,7 +7,9 @@ import { LanguageContext } from "../context/language/LanguageContext";
 
 export default function Home() {
   const { lang } = useContext(LanguageContext);
-  const { validAuth } = useContext(AuthContext);
+  const { validAuth, currentUser } = useContext(AuthContext);
+
+  console.log("firebase user", currentUser);
 
   return (
     <>
