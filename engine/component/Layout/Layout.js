@@ -12,8 +12,8 @@ export default function Layout({ children }) {
       <Header></Header>
 
       {children}
-      {modal.signup && <Signup></Signup>}
-      {modal.signin && <Signin></Signin>}
+      {modal.signup && <Signup />}
+      {modal.signin && <Signin />}
 
       <footer>
         <h1>Footer</h1>

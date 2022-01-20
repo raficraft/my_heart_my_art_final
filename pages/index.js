@@ -26,9 +26,14 @@ export default function Home() {
           <h1>NEXT.JS Laboratoire [MAIN] and update to vercel Hosting</h1>
 
           <h1>Language {lang && lang}</h1>
-          <Link href="/admin">
-            <a>Admin</a>
-          </Link>
+          {validAuth && currentUser && (
+            <Link href="/admin">
+              <a className={S.oldLink}>
+                <h1>Go to dashBoard</h1>
+              </a>
+            </Link>
+          )}
+
           {validAuth && (
             <h1>
               {!validAuth.isAuth && validAuth.role === 0 && lang === "FR"
