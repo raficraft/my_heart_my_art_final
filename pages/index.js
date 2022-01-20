@@ -32,7 +32,7 @@ export default function Home() {
           {validAuth && (
             <h1>
               {!validAuth.isAuth && validAuth.role === 0 && lang === "FR"
-                ? "Bonjour visiteur, vous n'êtes pas connecter"
+                ? "Bonjour visiteurs, vous n'êtes pas connecter"
                 : validAuth.isAuth && validAuth.role === 0 && lang === "FR"
                 ? `Bonjour ${currentUser?.email}`
                 : null}
