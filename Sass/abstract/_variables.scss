@@ -1,14 +1,15 @@
 //Text
 
 $text_black: #333;
+$text_black_smooth: rgb(77, 77, 77);
 $text_black_light: #6b6b6b;
 
 $black: #333;
 $light: #fff;
 $grey: rgba(158, 158, 158, 0.3);
 
-$blue: rgb(61, 105, 218);
-$red: rgb(187, 82, 82);
+$blue: #047ad5;
+$red: rgb(214, 62, 62);
 
 $space: 8px;
 
@@ -18,3 +19,5 @@ $shortTime: 0.3s;
 $mediumTime: 0.5s;
 $longTime: 0.8s;
 $veryLongTime: 1.2s;
+
+$smallRadius: 3px;

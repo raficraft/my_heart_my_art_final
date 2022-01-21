@@ -1,5 +1,6 @@
 @import "./../../../Sass/abstract/function.scss";
 @import "./../../../Sass/abstract/variables.scss";
+@import "./../../../Sass/abstract/animation.scss";
 
 .wrapper {
   @include flex(row, nowrap, center, center);
@@ -21,6 +22,7 @@
     @include flex(row, wrap, flex-start, center);
 
     .home_button {
+      @include flexCenter;
       transition: $shortTime;
       position: relative;
       padding-right: calc(2 * #{$space});
@@ -46,18 +48,44 @@
     }
 
     .nav_top {
-      background-color: antiquewhite;
-      @include flex(row, wrap, flex-start, center);
+      @include flexCenter;
       a {
-        margin: 0 calc(3 * #{$space});
-        font-weight: bold;
+        position: relative;
+        z-index: 100;
+        @include flex(row, wrap, center, center);
+        margin: 0 calc(5 * #{$space});
+        font-weight: 600;
+        font-size: 1rem;
+        color: $text_black_smooth;
+        svg {
+          margin-right: calc(2 * #{$space});
+          @include size(1.25rem, 1.25rem);
+        }
+
+        &:before {
+          @include emptyContent;
+          background-color: $blue;
+          border-radius: $smallRadius;
+          @include size(0, 100%);
+          z-index: -1;
+        }
+
+        &:hover {
+          color: white;
+        }
+
+        &:hover:before {
+          animation-name: zero_TO_full;
+          animation-fill-mode: both;
+          animation-duration: $shortTime;
+          padding: calc(0.5 * #{$space}) calc(1.25 * #{$space});
+        }
       }
     }
 
     .nav_right {
       @include flex(row, wrap, flex-end, center);
       flex: 1;
-      background-color: cornflowerblue;
 
       .select_lang {
         margin: 0 2rem 0 0;

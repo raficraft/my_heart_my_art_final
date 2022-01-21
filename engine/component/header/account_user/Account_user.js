@@ -10,7 +10,7 @@ import S from "./Account_user.module.scss";
 export default function Account_user() {
   const { openModal } = useContext(ModalContext);
   const { lang, change_lang } = useContext(LanguageContext);
-  const { validAuth, logout } = useContext(AuthContext);
+  const { validAuth, logout, currentUser } = useContext(AuthContext);
 
   const router = useRouter();
 
@@ -35,7 +35,7 @@ export default function Account_user() {
     <div className={S.user_account}>
       {/* Signin and Signup btn */}
 
-      {!validAuth.isAuth ? (
+      {!validAuth.isAuth && !currentUser ? (
         <>
           <button
             className={`${S.btn} ${S.signup}`}

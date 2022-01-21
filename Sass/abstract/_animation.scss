@@ -1,0 +1,11 @@
+@import "./function";
+@import "./variables";
+
+@keyframes zero_TO_full {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
