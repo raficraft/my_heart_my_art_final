@@ -55,7 +55,7 @@ export const btnLogin = {
     FR: "Se connecter",
     EN: "Sign in",
   },
-  subscrive: {
+  subscribe: {
     FR: "S'inscrire",
     EN: "Sign up",
   },

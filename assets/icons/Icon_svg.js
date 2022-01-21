@@ -82,3 +82,38 @@ export function Email_icon(props) {
     </svg>
   );
 }
+
+export function Language_icon(props) {
+  return (
+    <svg width="1em" height="1em" viewBox="0 0 24 24" {...props}>
+      <path
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        d="M12 23c6.075 0 11-4.925 11-11S18.075 1 12 1S1 5.925 1 12s4.925 11 11 11zm0 0c3 0 4-5 4-11S15 1 12 1S8 6 8 12s1 11 4 11zM2 16h20M2 8h20"
+      ></path>
+    </svg>
+  );
+}
+
+export function Check_icon(props) {
+  return (
+    <svg width="1em" height="1em" viewBox="0 0 24 24" {...props}>
+      <path
+        d="M21 7L9 19l-5.5-5.5l1.41-1.41L9 16.17L19.59 5.59L21 7z"
+        fill="currentColor"
+      ></path>
+    </svg>
+  );
+}
+
+export function Heart_icon(props) {
+  return (
+    <svg width="1em" height="1em" viewBox="0 0 24 24" {...props}>
+      <path
+        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.27 2 8.5C2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53L12 21.35z"
+        fill="currentColor"
+      ></path>
+    </svg>
+  );
+}

@@ -1,27 +1,58 @@
 @import "./../../../../Sass/abstract/function.scss";
 @import "./../../../../Sass/abstract/variables.scss";
+@import "./../../../../Sass/abstract/animation.scss";
 
 .user_account {
+  @include flexCenter;
   .btn {
+    @include flex(row, wrap, center, center);
     margin: 0 1.5rem 0rem 0;
     font-size: 1rem;
-    padding: 0.5rem;
     border: none;
     border-radius: 3px;
-    color: white;
+    color: $text_black;
     cursor: pointer;
+    background: none;
+    font-weight: bold;
+    position: relative;
+    z-index: 100;
+
+    &:before {
+      @include emptyContent;
+      background-color: $blue;
+      border-radius: $smallRadius;
+      @include size(0, 100%);
+      z-index: -1;
+    }
+
+    &:hover {
+      color: white;
+    }
+
+    &:hover:before {
+      animation-name: zero_TO_full;
+      animation-fill-mode: both;
+      animation-duration: $shortTime;
+      padding: calc(0.5 * #{$space}) calc(1.25 * #{$space});
+    }
   }
   .btn:last-child {
     margin: 0;
   }
 
   .signup {
-    background-color: rgb(4, 213, 115);
+    &:before {
+      background-color: $green;
+    }
   }
   .signin {
-    background-color: rgb(4, 122, 213);
+    &:before {
+      background-color: $blue;
+    }
   }
   .logout {
-    background-color: red;
+    &:before {
+      background-color: red;
+    }
   }
 }

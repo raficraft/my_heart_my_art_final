@@ -23,9 +23,9 @@ export default function Home() {
 
       <main className={S.wrapper}>
         <section className={S.content}>
-          <h1>NEXT.JS Laboratoire [MAIN] and update to vercel Hosting</h1>
+          <h1>NEXT.JS Laboratory hosting with vercel app</h1>
 
-          <h1>Language {lang && lang}</h1>
+          <h1>{lang && lang}</h1>
           {validAuth && currentUser && (
             <Link href="/admin">
               <a className={S.oldLink}>

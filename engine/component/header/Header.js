@@ -2,28 +2,22 @@ import Link from "next/link";
 import { useContext } from "react";
 import {
   Article_icon,
-  CarbonBlog,
   Email_icon,
+  Heart_icon,
   Home_icon,
   ImageGallery,
   Youtube_icon,
 } from "../../../assets/icons/Icon_svg";
 import { LanguageContext } from "../../../context/language/LanguageContext";
+import { nav_lang } from "../../../data/accountForm/accountForm";
 import Account_user from "./account_user/Account_user";
 
 import S from "./Header.module.scss";
+import Lang_select from "./lang_select/Lang_select";
 
 function Header() {
-  console.log(S);
-  const { lang, change_lang } = useContext(LanguageContext);
-
-  //Manage Lang
-  function handle_lang(e) {
-    change_lang(e.target.value);
-  }
-
+  const { lang } = useContext(LanguageContext);
   //Conponenet
-  console.log("render header");
   return (
     <header className={S.wrapper}>
       {/* Header Content */}
@@ -46,13 +40,19 @@ function Header() {
           <Link href="/blog">
             <a>
               <ImageGallery />
-              Gallery
+              my Art
+            </a>
+          </Link>
+          <Link href="/blog">
+            <a>
+              <Heart_icon />
+              my Heart
             </a>
           </Link>
           <Link href="/blog">
             <a>
               <Youtube_icon />
-              Video
+              Videos
             </a>
           </Link>
           <Link href="/blog">
@@ -65,17 +65,9 @@ function Header() {
 
         <div className={S.nav_right}>
           {/* Change language */}
+          <Lang_select />
 
-          <div className={S.select_lang}>
-            <select onChange={(e) => handle_lang(e)} value={lang}>
-              <option value="FR" key="FR">
-                FR
-              </option>
-              <option value="EN" key="EN">
-                EN
-              </option>
-            </select>
-          </div>
+          {/* Account user */}
           <Account_user />
         </div>
       </div>

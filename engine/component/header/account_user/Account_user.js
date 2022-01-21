@@ -3,6 +3,7 @@ import React, { useContext, useEffect } from "react";
 import { AuthContext } from "../../../../context/auth/AuthProvider";
 import { LanguageContext } from "../../../../context/language/LanguageContext";
 import { ModalContext } from "../../../../context/modal/ModalProvider";
+import { btnLogin } from "../../../../data/accountForm/accountForm";
 import { errorForm } from "../../../../data/errorForm/errorForm";
 
 import S from "./Account_user.module.scss";
@@ -41,13 +42,13 @@ export default function Account_user() {
             className={`${S.btn} ${S.signup}`}
             onClick={() => handle_modal("signup")}
           >
-            inscription
+            {btnLogin.subscribe[lang]}
           </button>
           <button
             className={`${S.btn} ${S.signin}`}
             onClick={() => handle_modal("signin")}
           >
-            Connexion
+            {btnLogin.connect[lang]}
           </button>
           {/* Close all modals btn */}
         </>
@@ -58,7 +59,7 @@ export default function Account_user() {
             className={`${S.btn} ${S.logout}`}
             onClick={(e) => handleLogout(e)}
           >
-            logout
+            {btnLogin.logout[lang]}
           </button>
         </>
       )}
