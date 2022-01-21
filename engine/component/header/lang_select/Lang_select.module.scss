@@ -5,7 +5,7 @@
 .lang_select {
   position: relative;
   @include flexCenter;
-  margin-right: calc(3 * #{$space});
+  margin-right: calc(1 * #{$space});
 
   svg {
     @include size(1rem, 1rem);

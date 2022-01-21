@@ -53,7 +53,7 @@
         position: relative;
         z-index: 100;
         @include flex(row, wrap, center, center);
-        margin: 0 calc(5 * #{$space});
+        margin: 0 calc(3.5 * #{$space});
         font-weight: 600;
         font-size: 1rem;
         color: $text_black_smooth;

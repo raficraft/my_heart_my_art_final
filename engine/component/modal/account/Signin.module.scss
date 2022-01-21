@@ -4,6 +4,7 @@
 $sizeClose: 2.5;
 
 .wrapper {
+  z-index: 10000;
   background-color: rgba(170, 170, 170, 0.5);
   position: absolute;
   top: 0;
@@ -16,12 +17,15 @@ $sizeClose: 2.5;
     background-color: white;
     position: relative;
     width: 320px;
+    box-shadow: $standartShadow;
+    border-radius: $mediumRadius;
 
     .header {
       @include flex(row, wrap, space-between, center);
       background-color: rgb(186, 186, 186);
       padding-left: 1rem;
       width: 100%;
+      border-radius: $mediumRadius $mediumRadius 0 0;
       h1 {
         margin: 0;
       }
@@ -31,6 +35,8 @@ $sizeClose: 2.5;
         color: white;
         background-color: red;
         cursor: pointer;
+        border-radius: 0 $mediumRadius 0 0;
+        border-left: 5px solid darken($red, 10%);
       }
     }
     //form

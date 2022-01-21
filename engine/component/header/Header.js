@@ -10,6 +10,7 @@ import {
 } from "../../../assets/icons/Icon_svg";
 import { LanguageContext } from "../../../context/language/LanguageContext";
 import { nav_lang } from "../../../data/accountForm/accountForm";
+import useMediaQuery from "../../hooks/useMediaQueries";
 import Account_user from "./account_user/Account_user";
 
 import S from "./Header.module.scss";
@@ -17,6 +18,10 @@ import Lang_select from "./lang_select/Lang_select";
 
 function Header() {
   const { lang } = useContext(LanguageContext);
+
+  const isMobil = useMediaQuery("(max-width: 767px)");
+  const isTablet = useMediaQuery("(min-width: 768px)");
+  const isDesktop = useMediaQuery("(min-width: 1100px)");
   //Conponenet
   return (
     <header className={S.wrapper}>
@@ -30,45 +35,57 @@ function Header() {
         </Link>
 
         {/* Header NAV*/}
-        <nav className={S.nav_top}>
-          <Link href="/blog">
-            <a>
-              <Article_icon />
-              Blog
-            </a>
-          </Link>
-          <Link href="/blog">
-            <a>
-              <ImageGallery />
-              my Art
-            </a>
-          </Link>
-          <Link href="/blog">
-            <a>
-              <Heart_icon />
-              my Heart
-            </a>
-          </Link>
-          <Link href="/blog">
-            <a>
-              <Youtube_icon />
-              Videos
-            </a>
-          </Link>
-          <Link href="/blog">
-            <a>
-              <Email_icon />
-              Contact
-            </a>
-          </Link>
-        </nav>
+        {isTablet && (
+          <nav className={S.nav_top}>
+            {isTablet && (
+              <>
+                <Link href="/blog">
+                  <a>
+                    <Article_icon />
+                    Blog
+                  </a>
+                </Link>
+                <Link href="/blog">
+                  <a>
+                    <Youtube_icon />
+                    Videos
+                  </a>
+                </Link>
+                <Link href="/blog">
+                  <a>
+                    <ImageGallery />
+                    my Art
+                  </a>
+                </Link>
+              </>
+            )}
+            {isDesktop && (
+              <>
+                <Link href="/blog">
+                  <a>
+                    <Heart_icon />
+                    my Heart
+                  </a>
+                </Link>
+
+                <Link href="/blog">
+                  <a>
+                    <Email_icon />
+                    Contact
+                  </a>
+                </Link>
+              </>
+            )}
+          </nav>
+        )}
 
         <div className={S.nav_right}>
           {/* Change language */}
           <Lang_select />
 
           {/* Account user */}
-          <Account_user />
+          {isTablet && <Account_user />}
+          {isMobil && <p>Hamburger</p>}
         </div>
       </div>
       {/* Header Content END*/}

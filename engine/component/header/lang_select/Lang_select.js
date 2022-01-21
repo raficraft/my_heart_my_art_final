@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Check_icon, Language_icon } from "../../../../assets/icons/Icon_svg";
 import { LanguageContext } from "../../../../context/language/LanguageContext";
-import { useClickOutside } from "../../hooks/useClickOutside";
+import { useClickOutside } from "../../../hooks/useClickOutside";
 import S from "./Lang_select.module.scss";
 
 export default function Lang_select() {

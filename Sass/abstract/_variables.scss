@@ -14,13 +14,17 @@ $green: rgb(0, 151, 81);
 
 $space: 8px;
 
-$container_width: 1330px;
-
 $shortTime: 0.3s;
 $mediumTime: 0.5s;
 $longTime: 0.8s;
 $veryLongTime: 1.2s;
 
 $smallRadius: 3px;
+$mediumRadius: 8px;
 
-$standartShadow: 0 0 5px 2px $black;
+$standartShadow: 0 0 15px 0px $black;
+
+$container_width: 1330px;
+@media screen and (max-width: 1024px) {
+  $container_width: calc(100% - 4rem) !global;
+}
