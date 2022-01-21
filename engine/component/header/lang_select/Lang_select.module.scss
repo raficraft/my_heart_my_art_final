@@ -10,6 +10,12 @@
   svg {
     @include size(1rem, 1rem);
     cursor: pointer;
+    transition: $shortTime;
+  }
+
+  &:hover svg {
+    transform: scale(1.2);
+    color: $red;
   }
 
   .drop_list {

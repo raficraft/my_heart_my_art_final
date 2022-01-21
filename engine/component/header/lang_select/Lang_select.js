@@ -1,11 +1,12 @@
 import React, { useContext, useState } from "react";
 import { Check_icon, Language_icon } from "../../../../assets/icons/Icon_svg";
 import { LanguageContext } from "../../../../context/language/LanguageContext";
+import { useClickOutside } from "../../hooks/useClickOutside";
 import S from "./Lang_select.module.scss";
 
 export default function Lang_select() {
   const { lang, change_lang } = useContext(LanguageContext);
-  const [show, setShow] = useState(false);
+  const { show, setShow, refOutsideClick } = useClickOutside(false);
 
   //Manage Lang
   function handle_lang(e) {
@@ -22,7 +23,7 @@ export default function Lang_select() {
       <Language_icon onClick={handle_show} />
 
       {show && (
-        <div className={S.drop_list}>
+        <div className={S.drop_list} ref={refOutsideClick}>
           <button
             type="button"
             className={lang === "FR" && S.active}
