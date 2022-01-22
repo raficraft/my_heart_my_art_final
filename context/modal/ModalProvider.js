@@ -15,8 +15,9 @@ export default function ModalProvider({ children }) {
   function openModal(target) {
     for (const key in modal) {
       if (Object.hasOwnProperty.call(modal, key)) {
+        console.log("key in loop", key);
         if (key !== target) {
-          setModal((modal[key] = false));
+          setModal((s) => ({ ...s, [target]: false }));
         }
       }
     }
@@ -28,7 +29,7 @@ export default function ModalProvider({ children }) {
     setModal(() => {
       for (const key in modal) {
         if (Object.hasOwnProperty.call(modal, key)) {
-          setModal((modal[key] = false));
+          setModal((s) => ({ ...s, [key]: false }));
         }
       }
     });

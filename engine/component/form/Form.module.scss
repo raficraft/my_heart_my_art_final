@@ -1,5 +1,6 @@
 @import "./../../../Sass/abstract/function.scss";
 @import "./../../../Sass/abstract/variables.scss";
+@import "./../../../Sass/abstract/animation.scss";
 
 $sizeClose: 2.5;
 
@@ -10,6 +11,9 @@ $sizeClose: 2.5;
   width: 320px;
   box-shadow: $standartShadow;
   border-radius: $mediumRadius;
+  animation-name: bottom_TO_origin;
+  animation-fill-mode: both;
+  animation-duration: $shortTime;
 
   .header {
     @include flex(row, wrap, space-between, center);

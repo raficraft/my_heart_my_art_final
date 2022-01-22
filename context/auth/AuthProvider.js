@@ -39,6 +39,13 @@ export default function AuthProvider({ children }) {
     setValidAuth((s) => ({ ...s, isAuth: false, role: 0 }));
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setCurrentUser(user);
+
+      console.log("check", user);
+      if (user) {
+        const pseudo = user?.email.split("@");
+        setCurrentUser((s) => ({ ...s, pseudo: pseudo[0] }));
+      }
+
       setLoadingData(false);
     });
 

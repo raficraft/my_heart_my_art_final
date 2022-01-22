@@ -4,6 +4,14 @@
 
 .user_account {
   @include flexCenter;
+  border-left: 1px solid $grey;
+  padding-left: calc(2 * #{$space});
+  .pseudo {
+    font-weight: 600;
+    font-size: 1rem;
+    color: $text_black_smooth;
+    padding-right: calc(2 * #{$space});
+  }
   .btn {
     @include flex(row, wrap, center, center);
     margin: 0 1.5rem 0rem 0;

@@ -10,6 +10,8 @@ import Nav_top from "../nav_top/nav_top";
 export default function Layout({ children }) {
   const { modal } = useContext(ModalContext);
 
+  console.log("modal", modal);
+
   return (
     <>
       <Header></Header>

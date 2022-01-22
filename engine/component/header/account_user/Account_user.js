@@ -1,5 +1,7 @@
+import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useContext, useEffect } from "react";
+import { Logout_icon } from "../../../../assets/icons/Icon_svg";
 import { AuthContext } from "../../../../context/auth/AuthProvider";
 import { LanguageContext } from "../../../../context/language/LanguageContext";
 import { ModalContext } from "../../../../context/modal/ModalProvider";
@@ -9,11 +11,13 @@ import { errorForm } from "../../../../data/errorForm/errorForm";
 import S from "./Account_user.module.scss";
 
 export default function Account_user() {
-  const { openModal } = useContext(ModalContext);
+  const { openModal, closeModal } = useContext(ModalContext);
   const { lang } = useContext(LanguageContext);
   const { validAuth, logout, currentUser } = useContext(AuthContext);
 
   const router = useRouter();
+
+  console.log("user", currentUser);
 
   //Manage Modal
   function handle_modal(modal) {
@@ -55,12 +59,18 @@ export default function Account_user() {
       ) : (
         <>
           {/*Create User button to goes dashboard Pages*/}
-          <button
-            className={`${S.btn} ${S.logout}`}
-            onClick={(e) => handleLogout(e)}
-          >
-            {btnLogin.logout[lang]}
-          </button>
+
+          <Link href="/admin">
+            <a
+              className={S.pseudo}
+              onClick={() => {
+                closeModal();
+              }}
+            >
+              {currentUser?.pseudo}
+            </a>
+          </Link>
+          <Logout_icon onClick={(e) => handleLogout(e)} />
         </>
       )}
     </div>

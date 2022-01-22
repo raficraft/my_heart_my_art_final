@@ -12,6 +12,7 @@ export default function Home() {
   console.log("firebase user", currentUser);
   console.log("Auth", validAuth);
   console.log("lang", lang);
+  console.log("????");
 
   return (
     <>

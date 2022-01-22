@@ -16,7 +16,7 @@ $base-font-size: 16px !default;
 }
 
 @function centerAbsolute($size) {
-  @return calc(50% - #{$size / 2});
+  @return calc(50% - #{$size} / 2);
 }
 
 //Mixin
