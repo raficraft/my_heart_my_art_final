@@ -9,4 +9,5 @@
   height: 100%;
   width: 100%;
   @include flex(column, wrap, center, center);
+  background-color: $grey;
 }

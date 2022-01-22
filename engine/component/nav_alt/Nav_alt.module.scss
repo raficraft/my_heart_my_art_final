@@ -1,5 +1,6 @@
 @import "./../../../Sass/abstract/function";
 @import "./../../../Sass/abstract/variables";
+@import "./../../../Sass/abstract/animation";
 
 .wrapper {
   background-color: $light;
@@ -11,25 +12,44 @@
     flex: 1;
     @include flex(column, nowrap, flex-start, center);
     header {
-      width: 100%;
-      padding: calc(6 * #{$space}) 0;
+      min-width: 100%;
       @include flex(row, nowrap, flex-end, center);
+      position: relative;
+      padding-top: calc(6 * #{$space});
+      padding-bottom: calc(3 * #{$space});
+      height: 32px;
+      box-sizing: content-box;
 
       a {
         font-size: 1.25rem;
+      }
+      &:after {
+        margin: auto;
+        position: absolute;
+        content: "";
+        bottom: 0;
+        height: 1px;
+        background-color: $grey;
+        width: 100%;
       }
     }
 
     .nav_alt {
       @include flex(column, nowrap, center, flex-start);
       flex: 1;
+      width: 60%;
 
       a {
         font-size: 2rem;
         line-height: 2rem;
         @include flexCenter;
         color: $black;
-        margin: calc(3 * #{$space}) 0;
+        padding: calc(3 * #{$space}) 0;
+        opacity: 0;
+        animation-name: bottom_TO_origin;
+        animation-fill-mode: both;
+        animation-duration: $shortTime;
+        animation-delay: calc(var(--i) * 0.2s);
         svg {
           margin: 0 calc(3 * #{$space});
         }
@@ -44,7 +64,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      @include size(20px, 20px);
+      @include size(32px, 32px);
       z-index: 100;
       position: relative;
 

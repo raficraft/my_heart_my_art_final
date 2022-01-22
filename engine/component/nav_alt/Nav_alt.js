@@ -32,33 +32,58 @@ export default function Nav_alt({ children }) {
         </header>
         <section className={S.nav_alt}>
           <Link href="/blog">
-            <a>
+            <a
+              style={{ "--i": "1" }}
+              onClick={() => {
+                closeModal();
+              }}
+            >
               <Article_icon />
               Blog
             </a>
           </Link>
           <Link href="/videos">
-            <a>
+            <a
+              style={{ "--i": "2" }}
+              onClick={() => {
+                closeModal();
+              }}
+            >
               <Youtube_icon />
               Videos
             </a>
           </Link>
           <Link href="/art">
-            <a>
+            <a
+              style={{ "--i": "3" }}
+              onClick={() => {
+                closeModal();
+              }}
+            >
               <ImageGallery />
               My art
             </a>
           </Link>
 
           <Link href="/heart">
-            <a>
+            <a
+              style={{ "--i": "4" }}
+              onClick={() => {
+                closeModal();
+              }}
+            >
               <Heart_icon />
               My heart
             </a>
           </Link>
 
           <Link href="/contact">
-            <a>
+            <a
+              style={{ "--i": "5" }}
+              onClick={() => {
+                closeModal();
+              }}
+            >
               <Email_icon />
               Contact
             </a>
