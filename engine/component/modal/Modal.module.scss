@@ -1,0 +1,12 @@
+@import "./../../../Sass/abstract/function.scss";
+@import "./../../../Sass/abstract/variables.scss";
+
+.wrapper {
+  z-index: 10000;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  @include flex(column, wrap, center, center);
+}

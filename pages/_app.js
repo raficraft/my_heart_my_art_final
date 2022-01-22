@@ -12,7 +12,7 @@ function MyApp({ Component, pageProps }) {
       <LanguageProvider>
         <ModalProvider>
           <Layout>
-            <Component {...pageProps} />;
+            <Component {...pageProps} />
           </Layout>
         </ModalProvider>
       </LanguageProvider>

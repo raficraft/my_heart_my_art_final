@@ -10,7 +10,7 @@ import S from "./Account_user.module.scss";
 
 export default function Account_user() {
   const { openModal } = useContext(ModalContext);
-  const { lang, change_lang } = useContext(LanguageContext);
+  const { lang } = useContext(LanguageContext);
   const { validAuth, logout, currentUser } = useContext(AuthContext);
 
   const router = useRouter();

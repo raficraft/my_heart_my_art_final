@@ -1,0 +1,70 @@
+import Link from "next/link";
+import React, { useContext } from "react";
+import {
+  Article_icon,
+  Email_icon,
+  Heart_icon,
+  ImageGallery,
+  Youtube_icon,
+} from "../../../assets/icons/Icon_svg";
+import { ModalContext } from "../../../context/modal/ModalProvider";
+import Account_user from "../header/account_user/Account_user";
+import Lang_select from "../header/lang_select/Lang_select";
+
+import S from "./Nav_alt.module.scss";
+
+export default function Nav_alt({ children }) {
+  const { closeModal } = useContext(ModalContext);
+
+  return (
+    <div className={S.wrapper}>
+      <div className={S.content}>
+        <header>
+          <Account_user />
+          <div
+            className={S.cross_container}
+            onClick={() => {
+              closeModal();
+            }}
+          >
+            <span className={S.cross}></span>
+          </div>
+        </header>
+        <section className={S.nav_alt}>
+          <Link href="/blog">
+            <a>
+              <Article_icon />
+              Blog
+            </a>
+          </Link>
+          <Link href="/videos">
+            <a>
+              <Youtube_icon />
+              Videos
+            </a>
+          </Link>
+          <Link href="/art">
+            <a>
+              <ImageGallery />
+              My art
+            </a>
+          </Link>
+
+          <Link href="/heart">
+            <a>
+              <Heart_icon />
+              My heart
+            </a>
+          </Link>
+
+          <Link href="/contact">
+            <a>
+              <Email_icon />
+              Contact
+            </a>
+          </Link>
+        </section>
+      </div>
+    </div>
+  );
+}

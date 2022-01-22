@@ -8,20 +8,18 @@ import {
   ImageGallery,
   Youtube_icon,
 } from "../../../assets/icons/Icon_svg";
-import { LanguageContext } from "../../../context/language/LanguageContext";
-import { nav_lang } from "../../../data/accountForm/accountForm";
+
 import useMediaQuery from "../../hooks/useMediaQueries";
+import Nav_top from "../nav_top/nav_top";
 import Account_user from "./account_user/Account_user";
+import Hamburger_menu from "./hamburger_menu/Hamburger_menu";
 
 import S from "./Header.module.scss";
 import Lang_select from "./lang_select/Lang_select";
 
 function Header() {
-  const { lang } = useContext(LanguageContext);
-
   const isMobil = useMediaQuery("(max-width: 767px)");
   const isTablet = useMediaQuery("(min-width: 768px)");
-  const isDesktop = useMediaQuery("(min-width: 1100px)");
   //Conponenet
   return (
     <header className={S.wrapper}>
@@ -34,50 +32,7 @@ function Header() {
           </a>
         </Link>
 
-        {/* Header NAV*/}
-        {isTablet && (
-          <nav className={S.nav_top}>
-            {isTablet && (
-              <>
-                <Link href="/blog">
-                  <a>
-                    <Article_icon />
-                    Blog
-                  </a>
-                </Link>
-                <Link href="/blog">
-                  <a>
-                    <Youtube_icon />
-                    Videos
-                  </a>
-                </Link>
-                <Link href="/blog">
-                  <a>
-                    <ImageGallery />
-                    my Art
-                  </a>
-                </Link>
-              </>
-            )}
-            {isDesktop && (
-              <>
-                <Link href="/blog">
-                  <a>
-                    <Heart_icon />
-                    my Heart
-                  </a>
-                </Link>
-
-                <Link href="/blog">
-                  <a>
-                    <Email_icon />
-                    Contact
-                  </a>
-                </Link>
-              </>
-            )}
-          </nav>
-        )}
+        <Nav_top key="1" />
 
         <div className={S.nav_right}>
           {/* Change language */}
@@ -85,7 +40,7 @@ function Header() {
 
           {/* Account user */}
           {isTablet && <Account_user />}
-          {isMobil && <p>Hamburger</p>}
+          {isMobil && <Hamburger_menu />}
         </div>
       </div>
       {/* Header Content END*/}

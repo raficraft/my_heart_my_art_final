@@ -1,0 +1,86 @@
+@import "./../../../Sass/abstract/function";
+@import "./../../../Sass/abstract/variables";
+
+.wrapper {
+  background-color: $light;
+  @include size(100%, 100%);
+  @include flex(column, nowrap, flex-start, center);
+
+  .content {
+    width: $container_width;
+    flex: 1;
+    @include flex(column, nowrap, flex-start, center);
+    header {
+      width: 100%;
+      padding: calc(6 * #{$space}) 0;
+      @include flex(row, nowrap, flex-end, center);
+
+      a {
+        font-size: 1.25rem;
+      }
+    }
+
+    .nav_alt {
+      @include flex(column, nowrap, center, flex-start);
+      flex: 1;
+
+      a {
+        font-size: 2rem;
+        line-height: 2rem;
+        @include flexCenter;
+        color: $black;
+        margin: calc(3 * #{$space}) 0;
+        svg {
+          margin: 0 calc(3 * #{$space});
+        }
+      }
+    }
+
+    $cross_width: 20px;
+    $cross_height: 2px;
+
+    .cross_container {
+      margin-left: calc(3 * #{$space});
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      @include size(20px, 20px);
+      z-index: 100;
+      position: relative;
+
+      .cross,
+      .cross:before,
+      .cross:after {
+        content: " ";
+        @include size(20px, 2px);
+        display: flex(row, wrap, center, center);
+        background-color: $black;
+        transform-origin: center;
+        z-index: -1;
+      }
+      .cross {
+        background-color: none;
+        @include size(20px, 0px);
+        transition: $shortTime;
+
+        &:hover,
+        &:active {
+          transform: scale(1.1) rotate(180deg);
+        }
+      }
+
+      .cross:after,
+      .cross:before {
+        margin-top: calc(#{$cross_height} / -2);
+        position: absolute;
+      }
+
+      .cross:before {
+        transform: rotate(45deg);
+      }
+      .cross:after {
+        transform: rotate(315deg);
+      }
+    }
+  }
+}

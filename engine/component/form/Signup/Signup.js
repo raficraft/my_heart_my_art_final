@@ -1,4 +1,4 @@
-import S from "./Signin.module.scss";
+import S from "./../Form.module.scss";
 import G from "./../../../../Sass/abstract/global.module.scss";
 import { useRouter } from "next/router";
 import { useContext, useState, useRef } from "react";
@@ -20,7 +20,6 @@ function Signup() {
 
   const addInputs = (el) => {
     if (el && !inputs.current.includes(el)) {
-      const name = el.getAttribute("name");
       inputs.current.push(el);
     }
   };
@@ -46,7 +45,6 @@ function Signup() {
       formRef.current.reset();
       setError("");
       closeModal();
-      router.push("/admin");
     } catch (err) {
       console.dir(err);
       if (err.code === "auth/invalid-email") {
@@ -62,50 +60,45 @@ function Signup() {
   }
 
   return (
-    <section className={S.wrapper} onClick={(e) => close_modals(e)}>
-      <div className={S.content}>
-        <header className={S.header}>
-          <h1>Inscription</h1>
-          <div className={S.close_modal} onClick={(e) => close_modals(e)}>
-            X
-          </div>
-        </header>
+    <div className={S.content}>
+      <header className={S.header}>
+        <h1>Inscription</h1>
+        <div className={S.close_modal} onClick={(e) => close_modals(e)}>
+          X
+        </div>
+      </header>
+      <form
+        className={S.account_user}
+        onSubmit={(e) => {
+          handleSubmit(e);
+        }}
+        ref={formRef}
+      >
+        <div className={G.bloc_input}>
+          <label htmlFor="email">E-mail</label>
+          <input type="text" ref={addInputs} name="email" id="email" />
+        </div>
+        <div className={G.bloc_input}>
+          <label htmlFor="pwd">Password</label>
+          <input type="password" ref={addInputs} name="pwd" id="pwd" />
+        </div>
 
-        {/*Form Signup*/}
-
-        <form
-          className={S.account_user}
-          onSubmit={(e) => {
-            handleSubmit(e);
-          }}
-          ref={formRef}
-        >
-          <div className={G.bloc_input}>
-            <label htmlFor="email">E-mail</label>
-            <input type="text" ref={addInputs} name="email" id="email" />
-          </div>
-          <div className={G.bloc_input}>
-            <label htmlFor="pwd">Password</label>
-            <input type="password" ref={addInputs} name="pwd" id="pwd" />
-          </div>
-
-          <div className={G.bloc_input}>
-            <label htmlFor="confirmPsw">Confirm Password</label>
-            <input
-              type="password"
-              ref={addInputs}
-              name="confirmPsw"
-              id="confirmPsw"
-            />
-          </div>
-          <div className={S.errorMessage}>
-            <p className={G.textWarning}>{error}</p>
-          </div>
-          <button>Connexion</button>
-          <p>Vous avez déjà un compte ?</p>
-        </form>
-      </div>
-    </section>
+        <div className={G.bloc_input}>
+          <label htmlFor="confirmPsw">Confirm Password</label>
+          <input
+            type="password"
+            ref={addInputs}
+            name="confirmPsw"
+            id="confirmPsw"
+          />
+        </div>
+        <div className={S.errorMessage}>
+          <p className={G.textWarning}>{error}</p>
+        </div>
+        <button>Connexion</button>
+        <p>Vous avez déjà un compte ?</p>
+      </form>
+    </div>
   );
 }
 
