@@ -5,6 +5,7 @@ import { ModalContext } from "../../../../context/modal/ModalProvider";
 import { AuthContext } from "../../../../context/auth/AuthProvider";
 import { LanguageContext } from "../../../../context/language/LanguageContext";
 import { errorForm } from "../../../../data/errorForm/errorForm";
+import { accountForm } from "../../../../data/accountForm/accountForm";
 
 function Signin() {
   const { closeModal } = useContext(ModalContext);
@@ -52,9 +53,9 @@ function Signin() {
   return (
     <div className={S.content}>
       <header className={S.header}>
-        <h1>Connexion</h1>
+        <h1>{accountForm.signin.title[lang]}</h1>
         <div className={S.close_modal} onClick={(e) => close_modals(e)}>
-          X
+          <span className={S.cross}></span>
         </div>
       </header>
       <form
@@ -65,18 +66,18 @@ function Signin() {
         ref={formRef}
       >
         <div className={G.bloc_input}>
-          <label htmlFor="email">E-mail</label>
+          <label htmlFor="email">{accountForm.signin.email[lang]}</label>
           <input type="text" name="email" id="email" ref={addInputs} />
         </div>
         <div className={G.bloc_input}>
-          <label htmlFor="pwd">Password</label>
+          <label htmlFor="pwd">{accountForm.signin.pwd[lang]}</label>
           <input type="password" name="pwd" id="pwd" ref={addInputs} />
         </div>
         <div className={S.errorMessage}>
           <p className={G.textWarning}>{error}</p>
         </div>
-        <button>Connexion</button>
-        <p>Vous avez déjà un compte ?</p>
+        <button>{accountForm.signin.button[lang]}</button>
+        <p>{accountForm.signin.switchForm[lang]}</p>
       </form>
     </div>
   );

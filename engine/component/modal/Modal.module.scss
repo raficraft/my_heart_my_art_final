@@ -1,5 +1,6 @@
 @import "./../../../Sass/abstract/function.scss";
 @import "./../../../Sass/abstract/variables.scss";
+@import "./../../../Sass/abstract/animation.scss";
 
 .wrapper {
   z-index: 10000;
@@ -10,4 +11,10 @@
   width: 100%;
   @include flex(column, wrap, center, center);
   background-color: $grey;
+}
+
+.revert-anim {
+  animation-name: origin_TO_top;
+  animation-fill-mode: both;
+  animation-duration: $shortTime;
 }

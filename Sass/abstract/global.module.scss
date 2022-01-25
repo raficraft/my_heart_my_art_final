@@ -1,5 +1,6 @@
 @import "./function";
 @import "./variables";
+@import "./animation";
 .bloc_input {
   @include flex(column, nowrap, flex-start, flex-start);
   margin: 0.5rem 0;

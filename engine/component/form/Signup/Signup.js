@@ -6,6 +6,7 @@ import { ModalContext } from "../../../../context/modal/ModalProvider";
 import { AuthContext } from "../../../../context/auth/AuthProvider";
 import { LanguageContext } from "../../../../context/language/LanguageContext";
 import { errorForm } from "../../../../data/errorForm/errorForm";
+import { accountForm } from "../../../../data/accountForm/accountForm";
 
 function Signup() {
   const { closeModal } = useContext(ModalContext);
@@ -14,7 +15,6 @@ function Signup() {
   const router = useRouter();
 
   const [error, setError] = useState("");
-
   const formRef = useRef();
   const inputs = useRef([]);
 
@@ -62,9 +62,9 @@ function Signup() {
   return (
     <div className={S.content}>
       <header className={S.header}>
-        <h1>Inscription</h1>
+        <h1>{accountForm.signup.title[lang]}</h1>
         <div className={S.close_modal} onClick={(e) => close_modals(e)}>
-          X
+          <span className={S.cross}></span>
         </div>
       </header>
       <form
@@ -75,16 +75,18 @@ function Signup() {
         ref={formRef}
       >
         <div className={G.bloc_input}>
-          <label htmlFor="email">E-mail</label>
+          <label htmlFor="email">{accountForm.signup.email[lang]}</label>
           <input type="text" ref={addInputs} name="email" id="email" />
         </div>
         <div className={G.bloc_input}>
-          <label htmlFor="pwd">Password</label>
+          <label htmlFor="pwd">{accountForm.signup.pwd[lang]}</label>
           <input type="password" ref={addInputs} name="pwd" id="pwd" />
         </div>
 
         <div className={G.bloc_input}>
-          <label htmlFor="confirmPsw">Confirm Password</label>
+          <label htmlFor="confirmPsw">
+            {accountForm.signup.confirmPwd[lang]}
+          </label>
           <input
             type="password"
             ref={addInputs}
@@ -95,8 +97,8 @@ function Signup() {
         <div className={S.errorMessage}>
           <p className={G.textWarning}>{error}</p>
         </div>
-        <button>Connexion</button>
-        <p>Vous avez déjà un compte ?</p>
+        <button>{accountForm.signup.button[lang]}</button>
+        <p>{accountForm.signup.alReadyAccount[lang]}</p>
       </form>
     </div>
   );

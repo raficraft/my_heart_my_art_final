@@ -1,51 +1,51 @@
-export const accoutForm = {
+export const accountForm = {
   signin: {
-    form: {
-      FR: "",
-      EN: "",
+    title: {
+      FR: "Connexion",
+      EN: "Sign in",
     },
     email: {
-      FR: "",
-      EN: "",
+      FR: "Email",
+      EN: "Email",
     },
     pwd: {
-      FR: "",
-      EN: "",
+      FR: "Mot de passe",
+      EN: "Password",
     },
-    createAccount: {
-      FR: "",
-      EN: "",
+    switchForm: {
+      FR: "Créer un compte",
+      EN: "Create an account",
     },
     button: {
-      FR: "",
-      EN: "",
+      FR: "Connection",
+      EN: "Connection",
     },
   },
 
   signup: {
-    form: {
-      FR: "",
-      EN: "",
+    title: {
+      FR: "Inscription",
+      EN: "Sign-up",
     },
     email: {
-      FR: "",
-      EN: "",
+      FR: "Email",
+      EN: "Email",
     },
     pwd: {
-      FR: "",
-      EN: "",
+      FR: "Mot de passe",
+      EN: "Password",
     },
     confirmPwd: {
-      FR: "",
-      EN: "",
+      FR: "Confirmez le mot de passe",
+      EN: "Confirm password",
     },
     alReadyAccount: {
-      FR: "",
-      EN: "",
+      FR: "Vous avez déjà un compte ?",
+      EN: "Already have an account ?",
     },
     button: {
-      FR: "",
-      EN: "",
+      FR: "Inscription",
+      EN: "Sign-up",
     },
   },
 };
