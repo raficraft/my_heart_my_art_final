@@ -16,9 +16,11 @@
     height: 1px;
     width: $container_width;
     background-color: $grey;
+    @media screen and (max-width: 1439px) {
+      width: calc(100% - 4rem);
+    }
   }
   .content {
-    width: $container_width;
     @include flex(row, wrap, flex-start, center);
 
     .home_button {

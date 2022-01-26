@@ -36,7 +36,8 @@ export default function AuthProvider({ children }) {
   }
 
   useEffect(() => {
-    setValidAuth((s) => ({ ...s, isAuth: false, role: 0 }));
+    console.log("ON laod check user", currentUser);
+
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setCurrentUser(user);
 
@@ -44,6 +45,7 @@ export default function AuthProvider({ children }) {
       if (user) {
         const pseudo = user?.email.split("@");
         setCurrentUser((s) => ({ ...s, pseudo: pseudo[0] }));
+        setValidAuth((s) => ({ ...s, isAuth: true, role: 0 }));
       }
 
       setLoadingData(false);

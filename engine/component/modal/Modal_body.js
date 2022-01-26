@@ -1,11 +1,10 @@
 import S from "./Modal.module.scss";
 import { useContext } from "react";
 import { ModalContext } from "../../../context/modal/ModalProvider";
+import Portal from "../../utils/portal";
 
 function Modal_body({ children }) {
   const { closeModal } = useContext(ModalContext);
-
-  console.log("WTF", swapClass);
 
   //Manage modal
   function close_modals(e) {
@@ -16,12 +15,11 @@ function Modal_body({ children }) {
   }
 
   return (
-    <section
-      className={`${S.wrapper} ${swapClass ? S[`${swapClass}`] : ""}`}
-      onClick={(e) => close_modals(e)}
-    >
-      {children}
-    </section>
+    <Portal selector="#__next">
+      <section className={` ${S.wrapper} `} onClick={(e) => close_modals(e)}>
+        {children}
+      </section>
+    </Portal>
   );
 }
 

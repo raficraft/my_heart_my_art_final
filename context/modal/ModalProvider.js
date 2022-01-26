@@ -10,15 +10,16 @@ export default function ModalProvider({ children }) {
     signin: false,
     signup: false,
     nav_alt: false,
+    upload_image: false,
   });
 
   function openModal(target) {
-    setSwapClass(false);
+    console.log(target);
     for (const key in modal) {
       if (Object.hasOwnProperty.call(modal, key)) {
         console.log("key in loop", key);
         if (key !== target) {
-          setModal((s) => ({ ...s, [target]: false }));
+          setModal((s) => ({ ...s, [key]: false }));
         }
       }
     }
@@ -27,15 +28,13 @@ export default function ModalProvider({ children }) {
   }
 
   function closeModal() {
-    setTimeout(() => {
-      setModal(() => {
-        for (const key in modal) {
-          if (Object.hasOwnProperty.call(modal, key)) {
-            setModal((s) => ({ ...s, [key]: false }));
-          }
+    setModal(() => {
+      for (const key in modal) {
+        if (Object.hasOwnProperty.call(modal, key)) {
+          setModal((s) => ({ ...s, [key]: false }));
         }
-      });
-    }, 5600);
+      }
+    });
   }
 
   return (

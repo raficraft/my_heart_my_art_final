@@ -1,4 +1,5 @@
 import S from "./../Sass/Layout.module.scss";
+import G from "./../Sass/abstract/global.module.scss";
 import Head from "next/head";
 import Link from "next/link";
 import { useContext } from "react";
@@ -23,7 +24,7 @@ export default function Home() {
       </Head>
 
       <main className={S.wrapper}>
-        <section className={S.content}>
+        <section className={`${S.content} ${G.primary_content}`}>
           <h1>NEXT.JS Laboratory hosting with vercel app</h1>
 
           <h1>{lang && lang}</h1>

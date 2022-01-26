@@ -4,7 +4,7 @@ $text_black: #333;
 $text_black_smooth: rgb(77, 77, 77);
 $text_black_light: #6b6b6b;
 
-$black: #333;
+$black: #1d2226;
 $light: #fff;
 $grey: rgba(158, 158, 158, 0.3);
 
@@ -21,10 +21,8 @@ $veryLongTime: 1.2s;
 
 $smallRadius: 3px;
 $mediumRadius: 5px;
+$bigradius: 10px;
 
 $standartShadow: 0 0 15px 0px $black;
 
 $container_width: 1330px;
-@media screen and (max-width: 1024px) {
-  $container_width: calc(100% - 4rem) !global;
-}

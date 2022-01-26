@@ -21,15 +21,3 @@
     opacity: 1;
   }
 }
-
-@keyframes origin_TO_top {
-  0% {
-    opacity: 0;
-    transform: translateY(0);
-  }
-
-  100% {
-    transform: translateY(-300%);
-    opacity: 1;
-  }
-}

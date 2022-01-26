@@ -1,0 +1,50 @@
+@import "./../../../Sass/abstract/function";
+@import "./../../../Sass/abstract/variables";
+
+.wrapper {
+  width: 100%;
+  border-bottom: 1px solid $grey;
+  @include flex(column, nowrap, center, center);
+  .profil_header {
+    padding: calc(#{$space} * 5) 0;
+    background-color: aqua;
+    @include flex(row, wrap, flex-start, center);
+    flex: 1;
+    &__form {
+      @include size(120px, 100%);
+      background-color: brown;
+      cursor: pointer;
+    }
+
+    &__upload {
+      svg {
+        @include size(120px, 120px);
+        color: $black;
+      }
+    }
+
+    &__body {
+      background-color: blanchedalmond;
+      @include flex(column, wrap, center, flex-start);
+      padding-left: calc(#{$space} * 3);
+      flex: 1;
+      align-self: stretch;
+    }
+  }
+
+  nav {
+    ul {
+      @include flex(row, nowrap, flex-start, flex-start);
+      width: 100%;
+      list-style: none;
+      li {
+        flex: 1;
+        text-align: center;
+      }
+    }
+  }
+}
+
+.test {
+  background-color: chartreuse;
+}

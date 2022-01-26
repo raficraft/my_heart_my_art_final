@@ -1,6 +1,7 @@
 @import "./function";
 @import "./variables";
 @import "./animation";
+
 .bloc_input {
   @include flex(column, nowrap, flex-start, flex-start);
   margin: 0.5rem 0;
@@ -17,4 +18,12 @@
 
 .textWarning {
   color: rgb(223, 80, 80);
+}
+
+.primary_content {
+  width: $container_width;
+
+  @media screen and (max-width: 1439px) {
+    width: calc(100% - 4rem);
+  }
 }

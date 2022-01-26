@@ -25,7 +25,6 @@ $sizeClose: 2.5rem;
     .close_modal {
       @include flex(row, wrap, center, center);
       @include size(#{$sizeClose}, #{$sizeClose});
-      color: white;
       background-color: red;
       cursor: pointer;
       border-radius: 0 $mediumRadius 0 0;

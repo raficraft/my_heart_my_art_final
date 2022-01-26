@@ -10,12 +10,12 @@ import { accountForm } from "../../../../data/accountForm/accountForm";
 function Signin() {
   const { closeModal } = useContext(ModalContext);
   const { lang } = useContext(LanguageContext);
+  const { signin } = useContext(AuthContext);
 
   const [error, setError] = useState("");
 
   const formRef = useRef();
   const inputs = useRef([]);
-  const { validAuth, signin } = useContext(AuthContext);
 
   const addInputs = (el) => {
     if (el && !inputs.current.includes(el)) {
