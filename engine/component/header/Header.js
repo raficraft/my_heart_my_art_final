@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Home_icon } from "../../../assets/icons/Icon_svg";
 
 import useMediaQuery from "../../hooks/useMediaQueries";
-import Nav_top from "../nav_top/nav_top";
+import Nav_top from "./../nav_top/nav_top";
 import Account_user from "./account_user/Account_user";
 import Hamburger_menu from "./hamburger_menu/Hamburger_menu";
 
