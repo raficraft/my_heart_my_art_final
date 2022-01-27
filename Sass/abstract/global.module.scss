@@ -27,3 +27,53 @@
     width: calc(100% - 4rem);
   }
 }
+
+.flex {
+  display: flex;
+}
+
+.hidden {
+  display: none;
+}
+
+.errorText {
+  color: $red;
+}
+
+.bloc_input {
+  @include flex(column, nowrap, center, center);
+  input[type="text"],
+  input[type="password"] {
+    height: 2rem;
+    padding: calc(#{$space} * 2.5) 0;
+    text-indent: calc(#{$space} * 1.5);
+    border: 2px solid $grey;
+    color: $black;
+    transition: $shortTime;
+    box-sizing: border-box;
+    border-radius: $smallRadius;
+
+    @include on-event {
+      border: 2px solid $blue;
+    }
+  }
+}
+
+.btn_primary {
+  height: 2rem;
+  color: $light;
+  border: none;
+  border-radius: $smallRadius;
+  padding: calc(#{$space} * 3);
+  font-weight: bold;
+  @include flexCenter();
+  transition: $shortTime;
+
+  &:hover {
+    background-color: lighten($blue, 10%);
+  }
+}
+
+.btn_sub {
+  background-color: $blue;
+}

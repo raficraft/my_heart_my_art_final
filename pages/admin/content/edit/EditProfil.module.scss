@@ -1,0 +1,36 @@
+@import "./../../../../Sass/abstract/function";
+@import "./../../../../Sass/abstract/variables";
+
+.editProfil {
+  @include flex(column, nowrap, flex-start, flex-start);
+  width: 100%;
+  padding: calc(#{$space} * 2.5);
+  margin: calc(#{$space} * 2.5) 0;
+  padding-bottom: 0;
+
+  fieldset {
+    @include flex(row, nowrap, flex-start, center);
+    width: 100%;
+    border: 4px solid $grey;
+    box-shadow: $standartShadow;
+    border-radius: $smallRadius;
+    padding: calc(#{$space} * 2) calc(#{$space} * 2);
+  }
+  footer {
+    @include flex(row, nowrap, flex-end, center);
+    margin: 2rem 0;
+    width: 100%;
+  }
+
+  .bloc_input {
+    margin: 1rem;
+    label {
+      font-weight: 300;
+      text-transform: uppercase;
+    }
+    input[type="text"],
+    input[type="password"] {
+      width: 250px;
+    }
+  }
+}

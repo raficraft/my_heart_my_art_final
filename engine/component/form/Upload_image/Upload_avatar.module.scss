@@ -8,6 +8,7 @@ $sizeClose: 2.5rem;
   width: 740px;
   border-radius: $bigradius;
   box-shadow: $standartShadow;
+  position: fixed;
 
   header {
     padding: calc(#{$space} * 3);
@@ -30,24 +31,6 @@ $sizeClose: 2.5rem;
 }
 
 .preview {
-  &_avatar {
-    @include flex(row, wrap, center, center);
-    padding-bottom: calc(#{$space} * 3);
-    border-bottom: 1px solid $grey;
-
-    &__trigger {
-      background-color: cadetblue;
-      @include circle();
-      background-image: url("./../../../../assets/UI/checkerboard-texture.jpg");
-      border: 5px solid $light;
-      transition: $shortTime;
-      cursor: pointer;
-      &:hover {
-        border: 5px solid $red;
-      }
-    }
-  }
-
   &_control {
     padding: calc(#{$space} * 1) calc(#{$space} * 3);
 

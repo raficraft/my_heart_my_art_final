@@ -1,5 +1,9 @@
 import React, { useContext } from "react";
-import { AccountCircle } from "../../../assets/icons/Icon_svg";
+import {
+  AccountCircle,
+  Edit_icon,
+  History_icon,
+} from "../../../assets/icons/Icon_svg";
 import { DashboardContext } from "../../../context/Admin/DashboardContext";
 import { ModalContext } from "../../../context/modal/ModalProvider";
 import Upload_image from "../../../engine/component/form/Upload_image/Upload_image";
@@ -11,9 +15,10 @@ import G from "./../../../Sass/abstract/global.module.scss";
 import S from "./Admin_header.module.scss";
 
 function Admin_header() {
-  const { handleTabs, handleUpload } = useContext(DashboardContext);
-
+  const { handleTabs, tabs } = useContext(DashboardContext);
   const { modal, openModal } = useContext(ModalContext);
+
+  console.log(tabs);
 
   return (
     <>
@@ -32,31 +37,30 @@ function Admin_header() {
             <h1>Mon compte</h1>
           </div>
         </header>
-        <nav className={` ${G.primary_content}`}>
-          <Tabs className={S.test}>
-            <button
-              onClick={() => {
-                handleTabs("profil");
-              }}
-            >
-              Profil
-            </button>
-            <button
-              onClick={() => {
-                handleTabs("edit");
-              }}
-            >
-              Editer
-            </button>
-            <button
-              onClick={() => {
-                handleTabs("history");
-              }}
-            >
-              Historique
-            </button>
-          </Tabs>
-        </nav>
+        <div className={S.nav_wrapper}>
+          <nav className={` ${G.primary_content} ${S.nav_admin}`}>
+            <Tabs className={S.test}>
+              <button
+                onClick={() => {
+                  handleTabs("profil");
+                }}
+                className={`${S.btn} ${tabs === "profil" ? S.active : null}`}
+              >
+                <AccountCircle></AccountCircle>
+                Profil
+              </button>
+              <button
+                onClick={() => {
+                  handleTabs("edit");
+                }}
+                className={`${S.btn} ${tabs === "edit" ? S.active : null}`}
+              >
+                <Edit_icon></Edit_icon>
+                Editer
+              </button>
+            </Tabs>
+          </nav>
+        </div>
       </section>
       {modal.upload_image && (
         <Modal_body>
@@ -70,7 +74,7 @@ function Admin_header() {
 export default Admin_header;
 
 export function Tabs({ children }) {
-  return <div>{children}</div>;
+  return <>{children}</>;
 }
 
 export function TabContent() {

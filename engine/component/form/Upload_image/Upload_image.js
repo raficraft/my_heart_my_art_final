@@ -2,12 +2,13 @@ import React, { useContext, useState } from "react";
 import { ModalContext } from "../../../../context/modal/ModalProvider";
 
 import S from "./Upload_avatar.module.scss";
-import F from "./../../form/Form.module.scss";
+import G from "./../../../../Sass/abstract/global.module.scss";
 import {
   Adjustments_icon,
   Crop_icon,
   Filter_icon,
 } from "../../../../assets/icons/Icon_svg";
+import Drop_avatar from "../../drop_avatar/Drop_avatar";
 
 export default function Upload_image() {
   const { closeModal } = useContext(ModalContext);
@@ -32,6 +33,8 @@ export default function Upload_image() {
     setControlTrigger((s) => ({ ...s, [target]: false }));
   }
 
+  function handleRange(e) {}
+
   return (
     <div className={S.wrapper}>
       <header>
@@ -42,16 +45,7 @@ export default function Upload_image() {
       </header>
 
       <div className={S.preview}>
-        <div className={S.preview_avatar}>
-          <label htmlFor="load_file">
-            <canvas
-              className={S.preview_avatar__trigger}
-              width="270px"
-              height="270px"
-            ></canvas>
-          </label>
-          <input type="file" id="load_file" className={S.hidden} />
-        </div>
+        <Drop_avatar></Drop_avatar>
 
         <div className={S.preview_control}>
           {/* {control trigger CROP} */}
@@ -64,7 +58,14 @@ export default function Upload_image() {
                 <label>Zoom</label>
                 <label>1</label>
               </span>
-              <input type="range" step="0.1" min="1" max="3" defaultValue="1" />
+              <input
+                type="range"
+                step="0.1"
+                min="1"
+                max="3"
+                defaultValue="1"
+                onChange={handleRange}
+              />
             </div>
 
             <div className={S.bloc_input}>
@@ -78,6 +79,7 @@ export default function Upload_image() {
                 min="-180"
                 max="180"
                 defaultValue="0"
+                onChange={handleRange}
               />
             </div>
           </div>
