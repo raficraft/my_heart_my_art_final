@@ -123,6 +123,7 @@ body {
   background-color: rgb(255, 255, 255);
   overflow-x: hidden;
   color: $text_black_light;
+  scroll-behavior: smooth;
 }
 
 ol,
@@ -215,4 +216,21 @@ button {
   flex-direction: column;
   justify-content: space-between;
   overflow-x: hidden;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+  position: top;
+  right: 0;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(167, 167, 167);
 }
