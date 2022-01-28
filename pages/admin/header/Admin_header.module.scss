@@ -53,7 +53,7 @@
 
   .btn {
     padding: calc(#{$space} * 2) calc(#{$space} * 2);
-    margin: 0 calc(#{$space} * 2);
+    margin: 0 calc(#{$space} * 2) 0 0;
     border: none;
     @include flex(row, nowrap, center, center);
     background: none;

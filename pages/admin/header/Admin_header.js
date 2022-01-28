@@ -5,7 +5,9 @@ import {
   History_icon,
 } from "../../../assets/icons/Icon_svg";
 import { DashboardContext } from "../../../context/Admin/DashboardContext";
+import { LanguageContext } from "../../../context/language/LanguageContext";
 import { ModalContext } from "../../../context/modal/ModalProvider";
+import { nav_admin } from "../../../data/pages/admin/editProfil/nav_admin";
 import Upload_image from "../../../engine/component/form/Upload_image/Upload_image";
 import Modal_body from "../../../engine/component/modal/Modal_body";
 import EditProfil from "../content/edit/EditProfil";
@@ -17,6 +19,7 @@ import S from "./Admin_header.module.scss";
 function Admin_header() {
   const { handleTabs, tabs } = useContext(DashboardContext);
   const { modal, openModal } = useContext(ModalContext);
+  const { lang } = useContext(LanguageContext);
 
   console.log(tabs);
 
@@ -34,7 +37,7 @@ function Admin_header() {
             </div>
           </form>
           <div className={`${S.profil_header__body}`}>
-            <h1>Mon compte</h1>
+            <h1>{nav_admin.header.title[lang]}</h1>
           </div>
         </header>
         <div className={S.nav_wrapper}>
@@ -47,7 +50,7 @@ function Admin_header() {
                 className={`${S.btn} ${tabs === "profil" ? S.active : null}`}
               >
                 <AccountCircle></AccountCircle>
-                Profil
+                {nav_admin.profil[lang]}
               </button>
               <button
                 onClick={() => {
@@ -56,7 +59,7 @@ function Admin_header() {
                 className={`${S.btn} ${tabs === "edit" ? S.active : null}`}
               >
                 <Edit_icon></Edit_icon>
-                Editer
+                {nav_admin.edit[lang]}
               </button>
             </Tabs>
           </nav>

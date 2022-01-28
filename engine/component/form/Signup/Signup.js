@@ -1,6 +1,5 @@
 import S from "./../Form.module.scss";
 import G from "./../../../../Sass/abstract/global.module.scss";
-import { useRouter } from "next/router";
 import { useContext, useState, useRef } from "react";
 import { ModalContext } from "../../../../context/modal/ModalProvider";
 import { AuthContext } from "../../../../context/auth/AuthProvider";
@@ -9,10 +8,9 @@ import { errorForm } from "../../../../data/errorForm/errorForm";
 import { accountForm } from "../../../../data/accountForm/accountForm";
 
 function Signup() {
-  const { closeModal } = useContext(ModalContext);
+  const { closeModal, openModal } = useContext(ModalContext);
   const { signup } = useContext(AuthContext);
   const { lang } = useContext(LanguageContext);
-  const router = useRouter();
 
   const [error, setError] = useState("");
   const formRef = useRef();
@@ -30,6 +28,12 @@ function Signup() {
     if (e.target === e.currentTarget) {
       closeModal();
     }
+  }
+
+  function switch_modal(e) {
+    e.stopPropagation();
+    closeModal();
+    openModal("signin");
   }
 
   //firebase signin
@@ -63,7 +67,16 @@ function Signup() {
     <div className={S.content}>
       <header className={S.header}>
         <h1>{accountForm.signup.title[lang]}</h1>
-        <div className={S.close_modal} onClick={(e) => close_modals(e)}>
+
+        {/* Close BTN */}
+
+        <div
+          tabIndex="0"
+          role="button"
+          className={S.close_modal}
+          onClick={(e) => close_modals(e)}
+          onKeyDown={(e) => close_modals(e)}
+        >
           <span className={S.cross}></span>
         </div>
       </header>
@@ -74,14 +87,21 @@ function Signup() {
         }}
         ref={formRef}
       >
+        {/* Field Email */}
+
         <div className={G.bloc_input}>
           <label htmlFor="email">{accountForm.signup.email[lang]}</label>
           <input type="text" ref={addInputs} name="email" id="email" />
         </div>
+
+        {/* Field PWD */}
+
         <div className={G.bloc_input}>
           <label htmlFor="pwd">{accountForm.signup.pwd[lang]}</label>
           <input type="password" ref={addInputs} name="pwd" id="pwd" />
         </div>
+
+        {/* Confirm  PWD */}
 
         <div className={G.bloc_input}>
           <label htmlFor="confirmPsw">
@@ -94,11 +114,25 @@ function Signup() {
             id="confirmPsw"
           />
         </div>
+
+        {/* Error message */}
+
         <div className={S.errorMessage}>
           <p className={G.textWarning}>{error}</p>
         </div>
-        <button>{accountForm.signup.button[lang]}</button>
-        <p>{accountForm.signup.alReadyAccount[lang]}</p>
+
+        {/* Sub button */}
+        <button className={`${G.btn_big} ${G.btn_sub}`}>
+          {accountForm.signup.button[lang]}
+        </button>
+        <p
+          onClick={(e) => {
+            switch_modal(e);
+          }}
+          className={G.text_switch}
+        >
+          {accountForm.signup.alReadyAccount[lang]}
+        </p>
       </form>
     </div>
   );

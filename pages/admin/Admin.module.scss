@@ -2,7 +2,7 @@
 @import "./../../Sass/abstract/variables";
 
 .wrapper {
-  @include flex(column, nowrap, flex-start, flex-start);
+  @include flex(column, nowrap, center, center);
   padding: calc(#{$space} * 4) 0;
   flex: 1;
   width: 100%;

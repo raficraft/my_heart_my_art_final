@@ -8,11 +8,12 @@ import { errorForm } from "../../../../data/errorForm/errorForm";
 import { accountForm } from "../../../../data/accountForm/accountForm";
 
 function Signin() {
-  const { closeModal } = useContext(ModalContext);
+  const { closeModal, openModal } = useContext(ModalContext);
   const { lang } = useContext(LanguageContext);
   const { signin } = useContext(AuthContext);
-
   const [error, setError] = useState("");
+
+  const remember = useRef(false);
 
   const formRef = useRef();
   const inputs = useRef([]);
@@ -30,16 +31,29 @@ function Signin() {
     }
   }
 
+  function switch_modal(e) {
+    e.stopPropagation();
+    closeModal();
+    openModal("signup");
+  }
+
   async function handleSubmit(e) {
     e.preventDefault();
 
+    const isRemember = remember.current.checked;
+
     try {
-      await signin(inputs.current[0].value, inputs.current[1].value);
+      await signin(
+        inputs.current[0].value,
+        inputs.current[1].value,
+        isRemember
+      );
       formRef.current.reset();
       setError("");
       closeModal();
     } catch (err) {
       console.dir(err);
+      console.log(err);
       if (err.code === "auth/wrong-password") {
         setError(errorForm.firebase.wrongPassword[lang]);
       }
@@ -54,7 +68,15 @@ function Signin() {
     <div className={S.content}>
       <header className={S.header}>
         <h1>{accountForm.signin.title[lang]}</h1>
-        <div className={S.close_modal} onClick={(e) => close_modals(e)}>
+
+        {/* Close BTN */}
+        <div
+          tabIndex="0"
+          role="button"
+          className={S.close_modal}
+          onClick={(e) => close_modals(e)}
+          onKeyDown={(e) => close_modals(e)}
+        >
           <span className={S.cross}></span>
         </div>
       </header>
@@ -65,19 +87,44 @@ function Signin() {
         }}
         ref={formRef}
       >
+        {/* Field Email */}
+
         <div className={G.bloc_input}>
           <label htmlFor="email">{accountForm.signin.email[lang]}</label>
           <input type="text" name="email" id="email" ref={addInputs} />
         </div>
+
+        {/* Field PWD */}
+
         <div className={G.bloc_input}>
           <label htmlFor="pwd">{accountForm.signin.pwd[lang]}</label>
           <input type="password" name="pwd" id="pwd" ref={addInputs} />
         </div>
+
+        {/* Remember checkbox */}
+
+        <div className={G.bloc_checked}>
+          <input type="checkbox" id="remmber" name="remember" ref={remember} />
+          <label htmlFor="remember">{accountForm.signin.checked[lang]}</label>
+        </div>
+
+        {/* Error Message */}
         <div className={S.errorMessage}>
           <p className={G.textWarning}>{error}</p>
         </div>
-        <button>{accountForm.signin.button[lang]}</button>
-        <p>{accountForm.signin.switchForm[lang]}</p>
+
+        {/* Sub button */}
+        <button className={`${G.btn_big} ${G.btn_sub}`}>
+          {accountForm.signin.button[lang]}
+        </button>
+        <p
+          onClick={(e) => {
+            switch_modal(e);
+          }}
+          className={G.text_switch}
+        >
+          {accountForm.signin.switchForm[lang]}
+        </p>
       </form>
     </div>
   );

@@ -5,12 +5,40 @@
 .user_account {
   @include flexCenter;
   border-left: 1px solid $grey;
-  padding-left: calc(2 * #{$space});
+  padding-left: calc(3 * #{$space});
+
   .pseudo {
-    font-weight: 600;
+    @include flex(row, wrap, center, center);
+    margin: 0 1.5rem 0rem 0;
     font-size: 1rem;
-    color: $text_black_smooth;
-    padding-right: calc(2 * #{$space});
+    border: none;
+    border-radius: 3px;
+    color: $text_black;
+    cursor: pointer;
+    background: none;
+    font-weight: bold;
+    position: relative;
+    z-index: 100;
+    text-transform: capitalize;
+
+    &:before {
+      @include emptyContent;
+      border-radius: $smallRadius;
+      @include size(0, 100%);
+      z-index: -1;
+    }
+
+    &:hover {
+      color: white;
+    }
+
+    &:hover:before {
+      background-color: $green;
+      animation-name: zero_TO_full;
+      animation-fill-mode: both;
+      animation-duration: $shortTime;
+      padding: calc(0.5 * #{$space}) calc(1.25 * #{$space});
+    }
   }
   .btn {
     @include flex(row, wrap, center, center);

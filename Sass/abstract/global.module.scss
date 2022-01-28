@@ -2,20 +2,6 @@
 @import "./variables";
 @import "./animation";
 
-.bloc_input {
-  @include flex(column, nowrap, flex-start, flex-start);
-  margin: 0.5rem 0;
-  label {
-    font-weight: bold;
-    width: 100%;
-    margin: 0 0 0.5rem 0;
-  }
-  input {
-    height: 2rem;
-    width: 100%;
-  }
-}
-
 .textWarning {
   color: rgb(223, 80, 80);
 }
@@ -40,8 +26,13 @@
   color: $red;
 }
 
+.text_switch:hover {
+  color: $blue;
+}
+
 .bloc_input {
-  @include flex(column, nowrap, center, center);
+  @include flex(column, nowrap, center, flex-start);
+  margin: 0.5rem 0;
   input[type="text"],
   input[type="password"] {
     height: 2rem;
@@ -52,10 +43,26 @@
     transition: $shortTime;
     box-sizing: border-box;
     border-radius: $smallRadius;
+    width: 100%;
 
     @include on-event {
       border: 2px solid $blue;
     }
+  }
+
+  label {
+    font-weight: bold;
+    width: 100%;
+    margin: 0 0 $space 0;
+  }
+}
+
+.bloc_checked {
+  @include flex(row, nowrap, flex-start, center);
+  margin: calc(#{$space} * 1) 0 0 0;
+
+  input {
+    margin-right: calc(#{$space} * 1.5);
   }
 }
 
@@ -76,4 +83,24 @@
 
 .btn_sub {
   background-color: $blue;
+
+  &:hover {
+    background-color: lighten($blue, 10%);
+  }
+}
+
+.btn_big {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  font-weight: bold;
+  color: $light;
+  border: none;
+  border-radius: 5px;
+  margin: auto;
+  padding: 1rem 0;
+  width: 100%;
+  margin: 1.5rem 0;
+  transition: $shortTime;
 }

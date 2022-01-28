@@ -8,9 +8,12 @@
   @include flex(column, nowrap, flex-start, center);
 
   .content {
-    width: $container_width;
     flex: 1;
     @include flex(column, nowrap, flex-start, center);
+    width: $container_width;
+    @media screen and (max-width: 1439px) {
+      width: calc(100% - 4rem);
+    }
     header {
       min-width: 100%;
       @include flex(row, nowrap, flex-end, center);
@@ -35,7 +38,7 @@
     }
 
     .nav_alt {
-      @include flex(column, nowrap, center, flex-start);
+      @include flex(column, nowrap, center, center);
       flex: 1;
       width: 100%;
 
@@ -50,8 +53,13 @@
         animation-fill-mode: both;
         animation-duration: $shortTime;
         animation-delay: calc(var(--i) * 0.1s);
+        transition: $shortTime;
         svg {
           margin: 0 calc(3 * #{$space});
+        }
+
+        &:hover {
+          color: $blue;
         }
       }
     }
@@ -67,6 +75,7 @@
       @include size(32px, 32px);
       z-index: 100;
       position: relative;
+      cursor: pointer;
 
       .cross,
       .cross:before,

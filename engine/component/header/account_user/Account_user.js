@@ -61,14 +61,14 @@ export default function Account_user() {
           {/*Create User button to goes dashboard Pages*/}
 
           <Link href="/admin">
-            <a
-              className={S.pseudo}
+            <button
+              className={`${S.pseudo}`}
               onClick={() => {
                 closeModal();
               }}
             >
               {currentUser?.pseudo}
-            </a>
+            </button>
           </Link>
           <Logout_icon onClick={(e) => handleLogout(e)} />
         </>

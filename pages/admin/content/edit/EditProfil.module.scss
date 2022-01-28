@@ -4,22 +4,29 @@
 .editProfil {
   @include flex(column, nowrap, flex-start, flex-start);
   width: 100%;
-  padding: calc(#{$space} * 2.5);
+
   margin: calc(#{$space} * 2.5) 0;
   padding-bottom: 0;
+  width: calc(#{$container_width} - 40px);
+  @media screen and (max-width: 1439px) {
+    width: calc(100% - 4rem);
+  }
 
   fieldset {
     @include flex(row, nowrap, flex-start, center);
-    width: 100%;
     border: 4px solid $grey;
     box-shadow: $standartShadow;
     border-radius: $smallRadius;
     padding: calc(#{$space} * 2) calc(#{$space} * 2);
+    width: 100%;
   }
   footer {
     @include flex(row, nowrap, flex-end, center);
-    margin: 2rem 0;
+    margin: 2rem 0 0 0;
     width: 100%;
+    @media screen and (max-width: 1439px) {
+      width: calc(100% - 4rem);
+    }
   }
 
   .bloc_input {

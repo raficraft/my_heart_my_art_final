@@ -12,6 +12,10 @@ export const accountForm = {
       FR: "Mot de passe",
       EN: "Password",
     },
+    checked: {
+      FR: "Se souvenir de moi",
+      EN: "Remember me",
+    },
     switchForm: {
       FR: "Créer un compte",
       EN: "Create an account",
