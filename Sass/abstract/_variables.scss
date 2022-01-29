@@ -7,10 +7,12 @@ $text_black_light: #6b6b6b;
 $black: #1d2226;
 $light: #fff;
 $grey: rgba(158, 158, 158, 0.3);
+$grey_hard: rgb(128, 128, 128);
 
 $blue: #047ad5;
 $red: rgb(214, 62, 62);
 $green: rgb(0, 151, 81);
+$yellow: rgb(255, 163, 0);
 
 $space: 8px;
 
@@ -24,5 +26,6 @@ $mediumRadius: 5px;
 $bigradius: 10px;
 
 $standartShadow: 0 0 15px 0px $black;
+$lightShadow: 5px 5px 10px 0px rgb(155, 155, 155);
 
 $container_width: 1330px;

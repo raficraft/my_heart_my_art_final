@@ -67,7 +67,7 @@ export default function Account_user() {
                 closeModal();
               }}
             >
-              {currentUser?.pseudo}
+              {currentUser?.displayName}
             </button>
           </Link>
           <Logout_icon onClick={(e) => handleLogout(e)} />

@@ -26,12 +26,44 @@
   color: $red;
 }
 
+.infoText {
+  color: $green;
+}
+
 .text_switch:hover {
   color: $blue;
 }
 
 .bloc_input {
   @include flex(column, nowrap, center, flex-start);
+  margin: 0.5rem 0;
+  position: relative;
+  input[type="text"],
+  input[type="password"] {
+    border: 2px solid $grey;
+    height: 2rem;
+    padding: calc(#{$space} * 2.5) 0;
+    text-indent: calc(#{$space} * 1.5);
+    color: $black;
+    transition: $shortTime;
+    box-sizing: border-box;
+    border-radius: $smallRadius;
+    width: 100%;
+
+    @include on-event {
+      border: 2px solid $blue;
+    }
+  }
+
+  label {
+    font-weight: bold;
+    width: 100%;
+    margin: 0 0 $space 0;
+  }
+}
+
+.bloc_input_row {
+  @include flex(row, wrap, flex-start, center);
   margin: 0.5rem 0;
   input[type="text"],
   input[type="password"] {
@@ -52,8 +84,7 @@
 
   label {
     font-weight: bold;
-    width: 100%;
-    margin: 0 0 $space 0;
+    margin: 0 2rem 0 0;
   }
 }
 
@@ -103,4 +134,58 @@
   width: 100%;
   margin: 1.5rem 0;
   transition: $shortTime;
+}
+
+.input_infoBubble {
+  border: 1px solid $grey_hard;
+  background-color: $light;
+  position: absolute;
+  bottom: -60px;
+  left: 10px;
+  padding: calc(#{$space} * 1.25);
+  @include flex(row, nowrap, center, center);
+  z-index: 10;
+  box-shadow: $lightShadow;
+  border-radius: 5px;
+  .icon {
+    @include size(1.75rem, 1.75rem);
+    @include flex(row, nowrap, center, center);
+    background-color: $yellow;
+    border-radius: 3px;
+    margin: 0 $space 0 0;
+    svg {
+      color: $light;
+      font-size: 1rem;
+    }
+  }
+
+  p {
+    margin: 0;
+  }
+  &:before,
+  &:after {
+    @include emptyContent();
+    display: inline-block;
+  }
+  &:before {
+    height: 0;
+    width: 0;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid rgb(255, 255, 255);
+    border-left: 10px solid transparent;
+    z-index: 500;
+    left: 16px;
+    top: -10px;
+  }
+
+  &:after {
+    height: 0;
+    width: 0;
+    border-right: 12px solid transparent;
+    border-bottom: 12px solid $grey_hard;
+    border-left: 12px solid transparent;
+    z-index: 400;
+    left: 14px;
+    top: -12px;
+  }
 }

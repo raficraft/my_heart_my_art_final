@@ -2,8 +2,22 @@
 @import "./../../Sass/abstract/variables";
 
 .wrapper {
-  @include flex(column, nowrap, center, center);
-  padding: calc(#{$space} * 4) 0;
+  @include flex(row, nowrap, space-between, center);
+  width: calc(#{$container_width});
   flex: 1;
-  width: 100%;
+  gap: 2rem;
+  margin: 3rem 0;
+  @media screen and (max-width: 1439px) {
+    width: calc(100% - 4rem);
+  }
+
+  aside {
+    display: flex;
+    align-self: stretch;
+    margin: 1rem 0;
+    min-width: 30%;
+    padding: 1rem;
+
+    border-left: 1px solid $grey;
+  }
 }

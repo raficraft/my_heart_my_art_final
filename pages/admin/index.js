@@ -11,10 +11,6 @@ import Admin_header, { TabContent } from "./header/Admin_header";
 import { DashboardContext } from "../../context/Admin/DashboardContext";
 
 function DashBoard() {
-  const { tabs } = useContext(DashboardContext);
-
-  const [isSelected, setIsSelected] = useState(tabs);
-
   return (
     <>
       <Head>
@@ -25,9 +21,12 @@ function DashBoard() {
 
       <main className={L.wrapper}>
         <Admin_header></Admin_header>
-        <section className={`${L.content} ${G.primary_content}`}>
+        <section className={`${G.primary_content}`}>
           <div className={` ${S.wrapper}`}>
             <TabContent></TabContent>
+            <aside>
+              <h1>ASIDE CONTAINER</h1>
+            </aside>
           </div>
         </section>
       </main>

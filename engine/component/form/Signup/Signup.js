@@ -46,6 +46,7 @@ function Signup() {
 
     try {
       await signup(inputs.current[0].value, inputs.current[1].value);
+
       formRef.current.reset();
       setError("");
       closeModal();

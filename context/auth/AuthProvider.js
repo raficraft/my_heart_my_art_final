@@ -9,6 +9,7 @@ import {
   browserLocalPersistence,
   browserSessionPersistence,
   updateEmail,
+  updateProfile,
   reauthenticateWithCredential,
   promptForCredentials,
 } from "firebase/auth";
@@ -20,26 +21,70 @@ export default function AuthProvider({ children }) {
     isAuth: false,
     role: 0,
   });
+
   const [currentUser, setCurrentUser] = useState();
   const [loadingData, setLoadingData] = useState(true);
 
   //Inscription
-  function signup(email, password) {
-    setValidAuth((s) => ({ ...s, isAuth: true }));
-    return createUserWithEmailAndPassword(auth, email, password);
+
+  /**
+   *
+   * @param {STRING} email
+   * @param {STRING} password
+   * @returns {response FireBase}
+   */
+
+  async function signup(email, password) {
+    const res = await createUserWithEmailAndPassword(auth, email, password);
+
+    /* SIGNUP FAILED */
+    if (res.error) {
+      console.dir("signup call", res.error);
+      return res.error;
+    }
+
+    /** SIGNUP SUCCESS */
+    if (res.user) {
+      /**Make display name */
+      const splitEmail = res.user.email.split("@");
+      const displayName = splitEmail[0];
+      const resUpdate = await updateProfil({
+        displayName: displayName,
+      });
+
+      if (resUpdate.error) {
+        console.dir("error", resUpdate.error);
+        return resUpdate.error;
+      }
+
+      console.log(resUpdate);
+      setValidAuth((s) => ({ ...s, isAuth: true }));
+      setCurrentUser(res.user);
+      return res.user;
+    }
+
+    console.dir(res);
   }
 
   //Login
-  function signin(email, password, isRemember) {
+  async function signin(email, password, isRemember) {
     const persistence = isRemember
       ? browserLocalPersistence
       : browserSessionPersistence;
 
-    console.log("persistence", persistence);
-
     setPersistence(auth, persistence);
+    const res = await signInWithEmailAndPassword(auth, email, password);
+
+    if (res.error) {
+      console.dir("signup call error", res.error);
+      return res.error;
+    }
+
+    console.dir("signup call success");
+    console.dir(res);
+
     setValidAuth((s) => ({ ...s, isAuth: true }));
-    return signInWithEmailAndPassword(auth, email, password);
+    return res;
   }
 
   //Logout
@@ -49,58 +94,55 @@ export default function AuthProvider({ children }) {
   }
 
   /**
-   *
    * @param {Object} data
    */
 
-  function updateUser(data) {
-    updateProfile(auth.currentUser, {
-      displayName: "Jane Q. User",
-      photoURL: "https://example.com/jane-q-user/profile.jpg",
-    });
+  async function updateProfil(data) {
+    console.log("in call api", data);
+    console.log("current", auth.currentUser);
+    let res = {};
+    console.log("yolo");
+    return updateProfile(auth.currentUser, { ...data })
+      .then((result) => {
+        console.log("res ok", result);
+        res.succes = true;
+        res.error = false;
+        console.log(res);
+        return res;
+      })
+      .catch((error) => {
+        console.log("res fail", error);
+        res.sucess = false;
+        res.error = error;
+        return res;
+      });
   }
 
   /**
-   *
    * @param {String} newPwd
    */
-
   function updatePwd(newPwd) {
     updatePassword(user, newPassword);
   }
 
   /**
-   *
    * @param {String} newmail
    */
   async function updateUserEmail(newMail) {
     let res = {};
     return updateEmail(auth.currentUser, newMail)
-      .then(() => {
-        // Email updated!
-        // ...
-
+      .then((result) => {
+        console.log("update email : ", result);
         res.succes = true;
         res.error = false;
         return res;
       })
       .catch((error) => {
-        // An error occurred
-        // ...
-
         res.sucess = false;
         res.error = error;
-
         return res;
       });
   }
-
-  function reAuth() {
-    const credential = promptForCredentials();
-
-    reauthenticateWithCredential(user, credential);
-  }
-
   useEffect(() => {
     console.log("ON laod check user", currentUser);
 
@@ -109,9 +151,7 @@ export default function AuthProvider({ children }) {
 
       console.log("check", user);
       if (user) {
-        const pseudo = user?.email.split("@");
-        setCurrentUser((s) => ({ ...s, pseudo: pseudo[0] }));
-        setValidAuth((s) => ({ ...s, isAuth: true, role: 0 }));
+        setValidAuth((s) => ({ ...s, isAuth: true }));
       }
 
       setLoadingData(false);
@@ -128,13 +168,20 @@ export default function AuthProvider({ children }) {
         signin,
         logout,
         currentUser,
-        updateUser,
+        updateProfil,
         updateUserEmail,
         updatePwd,
-        reAuth,
       }}
     >
       {!loadingData && children}
     </AuthContext.Provider>
   );
 }
+
+/**
+ * 
+ *   function signup(email, password) {
+    setValidAuth((s) => ({ ...s, isAuth: true }));
+    return createUserWithEmailAndPassword(auth, email, password);
+  }
+ */
