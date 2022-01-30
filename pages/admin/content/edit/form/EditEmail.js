@@ -1,20 +1,26 @@
 import React, { useContext, useState, useRef } from "react";
-import { useEffect } from "react/cjs/react.development";
 import { Exclamation } from "../../../../../assets/icons/Icon_svg";
 import { AuthContext } from "../../../../../context/auth/AuthProvider";
 import { LanguageContext } from "../../../../../context/language/LanguageContext";
-import { editProfil } from "../../../../../data/pages/admin/editProfil/editProfil";
+import { ModalContext } from "../../../../../context/modal/ModalProvider";
+//import { editProfil } from "../../../../../data/pages/admin/editProfil/editProfil";
+import { regexEmail } from "../../../../../data/regex";
+import Modal_body from "../../../../../engine/component/modal/Modal_body";
+import EditWithAuth from "../EditWithAuth";
+import { editEmail, editProfil } from "../lang/lang";
 
 import G from "./../../../../../Sass/abstract/global.module.scss";
 import S from "./../EditProfil.module.scss";
 
 export default function EditEmail() {
   const { currentUser, updateUserEmail } = useContext(AuthContext);
+  const { modal, openModal, closeModal } = useContext(ModalContext);
   const { lang } = useContext(LanguageContext);
+
   const [error, setError] = useState("");
   const [info, setInfo] = useState("");
+  const [editMail, setEditMail] = useState(false);
 
-  const [loading, setLoading] = useState(false);
   const inputRef = useRef();
 
   /**Call FireBase API */
@@ -23,40 +29,18 @@ export default function EditEmail() {
 
     const email = inputRef.current.value;
 
-    /* handle Email change */
-
-    if (inputRef.current.value === "") {
-      setError("Veuillez remplir le champ email");
-      //   setTimeout(() => {
-      //     setError("");
-      //     setLoading(false);
-      //   }, 1500);
-      return;
-    }
-
-    if (email === currentUser.email) {
-      setError("Email identique , veuillez en choisr un nouveau");
-      setTimeout(() => {
-        setError("");
-        setLoading(false);
-      }, 1500);
-      return;
-    }
-
     /** Check control is OK call API */
 
     if (
       inputRef.current.value &&
       inputRef.current.value !== currentUser.email
     ) {
-      setLoading(!loading);
       const res = await updateUserEmail(email);
 
       if (res.error.code === "auth/invalid-email") {
-        setError("Veuillez saisir un Email valide");
+        setError(`${editEmail.error.emailInvalid[lang]}`);
         setTimeout(() => {
           setError("");
-          setLoading(false);
         }, 1500);
       }
 
@@ -64,7 +48,6 @@ export default function EditEmail() {
         setError("email déjà utiliser");
         setTimeout(() => {
           setError("");
-          setLoading(false);
         }, 1500);
         return;
       }
@@ -73,15 +56,14 @@ export default function EditEmail() {
         setInfo("Veuilez vous déconnecter , et vous reconnecter");
         setTimeout(() => {
           setError("");
-          setLoading(false);
         }, 1500);
         return;
       }
 
       if (res.succes) {
-        setLoading(false);
         setInfo("Email modifier avec succès");
-
+        closeModal();
+        setEditMail(false);
         setTimeout(() => {
           setInfo("");
         }, 1500);
@@ -91,49 +73,98 @@ export default function EditEmail() {
     }
   }
 
+  function reAuth(e) {
+    e.preventDefault();
+
+    const email = inputRef.current.value;
+
+    if (email === "" || email.lenght < 3) {
+      setError("Trois caractère minimum.");
+      setTimeout(() => {
+        setError("");
+      }, 1500);
+      return;
+    }
+
+    if (!email.match(regexEmail)) {
+      setError(`${editEmail.error.emailInvalid[lang]}`);
+      setTimeout(() => {
+        setError("");
+      }, 1500);
+      return;
+    }
+
+    if (email === currentUser.email) {
+      setError("email identique , veuillez en choisir un nouveau.");
+      setTimeout(() => {
+        setError("");
+      }, 1500);
+      return;
+    }
+    setEditMail(true);
+    openModal("edit");
+  }
+
   return (
-    <form
-      onSubmit={(e) => {
-        handleEditEmail(e);
-      }}
-    >
-      <div className={S.form_content}>
-        <div className={`${G.bloc_input} ${S.bloc_input}`}>
-          <label htmlFor="email">{editProfil.email.email[lang]}</label>
-          <input
-            type="text"
-            id="email"
-            name="email"
-            placeholder={
-              currentUser ? currentUser.email : "Veuiller saisir un email"
-            }
-            defaultValue={currentUser ? currentUser.email : ""}
-            ref={inputRef}
-          />
+    <>
+      <form
+        onSubmit={(e) => {
+          reAuth(e);
+        }}
+      >
+        <div className={S.form_content}>
+          <div className={`${G.bloc_input} ${S.bloc_input}`}>
+            <label htmlFor="email">{editProfil.email.label[lang]}</label>
+            <input
+              type="text"
+              id="email"
+              name="email"
+              placeholder={
+                currentUser
+                  ? currentUser.email
+                  : `${editProfil.email.placeholder[lang]}`
+              }
+              defaultValue={currentUser ? currentUser.email : ""}
+              ref={inputRef}
+            />
 
-          {/*Manage error or info message */}
-          {error && (
-            <div className={`${G.errorText} ${G.input_infoBubble}`}>
-              <span className={G.icon}>
-                <Exclamation></Exclamation>
-              </span>
-              <p>{error}</p>
-            </div>
-          )}
-          {info && (
-            <div className={`${G.infoText} ${G.input_infoBubble}`}>
-              <span className={G.icon}>
-                <Exclamation></Exclamation>
-              </span>
-              <p>{info}</p>
-            </div>
-          )}
+            {/*Manage error or info message */}
+            {error && (
+              <div className={`${G.errorText} ${G.input_infoBubble}`}>
+                <span className={G.icon}>
+                  <Exclamation></Exclamation>
+                </span>
+                <p>{error}</p>
+              </div>
+            )}
+            {info && (
+              <div className={`${G.infoText} ${G.input_infoBubble}`}>
+                <span className={G.icon}>
+                  <Exclamation></Exclamation>
+                </span>
+                <p>{info}</p>
+              </div>
+            )}
+          </div>
+
+          <button className={`${G.btn_sub} ${G.btn_primary}`} type="submit">
+            {editProfil.email.btn[lang]}
+          </button>
         </div>
+      </form>
 
-        <button className={`${G.btn_sub} ${G.btn_primary}`} type="submit">
-          {loading ? "...loading" : editProfil.email.btn[lang]}
-        </button>
-      </div>
-    </form>
+      {/** We pass to the content of the modal box, the new value and the script
+        control of the component that will launch the api call transmitted by
+        the provider.*/}
+
+      {modal.edit && editMail && (
+        <Modal_body>
+          <EditWithAuth
+            editProfil={handleEditEmail}
+            newVal={inputRef.current.value}
+          />
+        </Modal_body>
+      )}
+    </>
   );
 }

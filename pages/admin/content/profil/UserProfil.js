@@ -3,7 +3,7 @@ import React from "react";
 export default function UserProfil() {
   return (
     <div>
-      <h1>USer profil</h1>
+      <h1>User profil</h1>
 
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc a egestas

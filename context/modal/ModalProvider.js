@@ -11,6 +11,7 @@ export default function ModalProvider({ children }) {
     signup: false,
     nav_alt: false,
     upload_image: false,
+    edit: false,
   });
 
   function openModal(target) {

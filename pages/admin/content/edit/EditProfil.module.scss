@@ -12,6 +12,11 @@
     margin: 2rem 0;
     border: 3px solid $grey;
     padding: 1rem 1.5rem;
+
+    .errorText {
+      margin: 1rem 0;
+      color: $red;
+    }
   }
 
   .form_content {

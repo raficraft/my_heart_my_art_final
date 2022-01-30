@@ -120,6 +120,14 @@
   }
 }
 
+.btn_alert {
+  background-color: $red;
+
+  &:hover {
+    background-color: lighten($red, 10%);
+  }
+}
+
 .btn_big {
   display: flex;
   justify-content: center;
@@ -140,7 +148,7 @@
   border: 1px solid $grey_hard;
   background-color: $light;
   position: absolute;
-  bottom: -60px;
+  top: calc(100% + 9px);
   left: 10px;
   padding: calc(#{$space} * 1.25);
   @include flex(row, nowrap, center, center);
@@ -188,4 +196,9 @@
     left: 14px;
     top: -12px;
   }
+}
+
+.relative {
+  position: relative;
+  width: 100%;
 }

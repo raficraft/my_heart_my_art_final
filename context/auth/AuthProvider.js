@@ -10,6 +10,7 @@ import {
   browserSessionPersistence,
   updateEmail,
   updateProfile,
+  updatePassword,
   reauthenticateWithCredential,
   promptForCredentials,
 } from "firebase/auth";
@@ -82,7 +83,7 @@ export default function AuthProvider({ children }) {
 
     console.dir("signup call success");
     console.dir(res);
-
+    setCurrentUser(res.user);
     setValidAuth((s) => ({ ...s, isAuth: true }));
     return res;
   }
@@ -121,8 +122,21 @@ export default function AuthProvider({ children }) {
   /**
    * @param {String} newPwd
    */
-  function updatePwd(newPwd) {
-    updatePassword(user, newPassword);
+  async function updatePwd(newPwd) {
+    return updatePassword(auth.currentUser, newPwd)
+      .then((result) => {
+        console.log("res ok", result);
+        res.succes = true;
+        res.error = false;
+        console.log(res);
+        return res;
+      })
+      .catch((error) => {
+        console.log("res fail", error);
+        res.sucess = false;
+        res.error = error;
+        return res;
+      });
   }
 
   /**
@@ -143,6 +157,7 @@ export default function AuthProvider({ children }) {
         return res;
       });
   }
+
   useEffect(() => {
     console.log("ON laod check user", currentUser);
 

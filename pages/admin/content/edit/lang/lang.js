@@ -1,3 +1,14 @@
+export const editEmail = {
+  error: {
+    emailInvalid: {
+      FR: "E-mail invalide",
+      EN: "Email invalid",
+    },
+  },
+};
+
+/** User data editing page text */
+
 export const editProfil = {
   email: {
     label: {
