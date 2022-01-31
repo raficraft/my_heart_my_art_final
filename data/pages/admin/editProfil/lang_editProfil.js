@@ -95,8 +95,8 @@ export const editProfil = {
     },
 
     placeholder: {
-      FR: "Votre E-mail",
-      EN: "Your email",
+      FR: "Votre E-mail.",
+      EN: "Your email.",
     },
 
     btn: {
