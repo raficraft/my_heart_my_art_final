@@ -15,6 +15,7 @@ import { Exclamation } from "../../../../assets/icons/Icon_svg";
  */
 
 export default function EditWithAuth(props) {
+  console.log("????", F);
   const { editProfil, newVal } = { ...props };
 
   const { closeModal } = useContext(ModalContext);
