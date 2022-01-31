@@ -1,14 +1,15 @@
 import React, { useContext, useState, useRef } from "react";
-import { useEffect } from "react/cjs/react.development";
 import { Exclamation } from "../../../../../assets/icons/Icon_svg";
 import { AuthContext } from "../../../../../context/auth/AuthProvider";
 import { LanguageContext } from "../../../../../context/language/LanguageContext";
 import { ModalContext } from "../../../../../context/modal/ModalProvider";
-//import { editProfil } from "../../../../../data/pages/admin/editProfil/editProfil";
-import { regexAlphNum, regexEmail, regexPwd } from "../../../../../data/regex";
+import {
+  editProfil,
+  editPass,
+} from "../../../../../data/pages/admin/editProfil/lang_editProfil";
+import { regexPwd } from "../../../../../data/regex";
 import Modal_body from "../../../../../engine/component/modal/Modal_body";
 import EditWithAuth from "../EditWithAuth";
-import { editPass, editProfil } from "../lang/lang";
 
 import G from "./../../../../../Sass/abstract/global.module.scss";
 import S from "./../EditProfil.module.scss";

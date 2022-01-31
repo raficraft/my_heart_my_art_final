@@ -3,10 +3,13 @@ import { Exclamation } from "../../../../../assets/icons/Icon_svg";
 import { AuthContext } from "../../../../../context/auth/AuthProvider";
 import { LanguageContext } from "../../../../../context/language/LanguageContext";
 import { ModalContext } from "../../../../../context/modal/ModalProvider";
+import {
+  editEmail,
+  editProfil,
+} from "../../../../../data/pages/admin/editProfil/lang_editProfil";
 import { regexEmail } from "../../../../../data/regex";
 import Modal_body from "../../../../../engine/component/modal/Modal_body";
 import EditWithAuth from "../EditWithAuth";
-import { editEmail, editProfil } from "../lang/lang";
 
 import G from "./../../../../../Sass/abstract/global.module.scss";
 import S from "./../EditProfil.module.scss";

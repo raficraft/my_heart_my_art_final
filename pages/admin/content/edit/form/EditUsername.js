@@ -9,7 +9,10 @@ import S from "./../EditProfil.module.scss";
 import { ModalContext } from "../../../../../context/modal/ModalProvider";
 import EditWithAuth from "../EditWithAuth";
 import { regexAlphNum } from "../../../../../data/regex";
-import { editDisplayName, editProfil } from "../lang/lang";
+import {
+  editDisplayName,
+  editProfil,
+} from "../../../../../data/pages/admin/editProfil/lang_editProfil";
 
 export default function EditUsername() {
   const { currentUser, updateProfil } = useContext(AuthContext);
