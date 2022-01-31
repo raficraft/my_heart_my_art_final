@@ -28,8 +28,8 @@ export const editEmail = {
 export const editDisplayName = {
   error: {
     userNotFound: {
-      FR: "Utilisateur introuvable",
-      EN: "User not found",
+      FR: "Utilisateur introuvable.",
+      EN: "User not found.",
     },
     tooShort: {
       FR: "Trois caractères minimums",
