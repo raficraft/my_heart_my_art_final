@@ -2,7 +2,6 @@ import React, { useContext, useState, useRef } from "react";
 import { Exclamation } from "../../../../../assets/icons/Icon_svg";
 import { AuthContext } from "../../../../../context/auth/AuthProvider";
 import { LanguageContext } from "../../../../../context/language/LanguageContext";
-//import { editProfil } from "../../../../../data/pages/admin/editProfil/editProfil";
 import Modal_body from "../../../../../engine/component/modal/Modal_body";
 
 import G from "./../../../../../Sass/abstract/global.module.scss";
@@ -10,7 +9,7 @@ import S from "./../EditProfil.module.scss";
 import { ModalContext } from "../../../../../context/modal/ModalProvider";
 import EditWithAuth from "../EditWithAuth";
 import { regexAlphNum } from "../../../../../data/regex";
-import { editProfil } from "../lang/lang";
+import { editDisplayName, editProfil } from "../lang/lang";
 
 export default function EditUsername() {
   const { currentUser, updateProfil } = useContext(AuthContext);
@@ -32,14 +31,16 @@ export default function EditUsername() {
     ) {
       const res = await updateProfil({ displayName: username });
 
-      console.log(res);
-
-      if (res.error.code) {
-        console.log(res.error);
+      if (res.error.code === "auth/user-not-found") {
+        setError(`${editDisplayName.error.userNotFound[lang]}`);
+        setTimeout(() => {
+          setError("");
+        }, 2200);
+        return;
       }
 
       if (res.succes) {
-        setInfo("Username modifier avec succès");
+        setError(`${editDisplayName.success.change[lang]}`);
         setEditUser(false);
         closeModal();
         setTimeout(() => {
@@ -59,7 +60,7 @@ export default function EditUsername() {
     console.log(username);
 
     if (username === "" || username.lenght < 3) {
-      setError("Trois caractère minimum.");
+      setError(`${editDisplayName.error.userNotFound[lang]}`);
       setTimeout(() => {
         setError("");
       }, 1500);
@@ -67,7 +68,7 @@ export default function EditUsername() {
     }
 
     if (!username.match(regexAlphNum)) {
-      setError("Caractères Alphanumériques seulement");
+      setError(`${editDisplayName.error.regex[lang]}`);
       setTimeout(() => {
         setError("");
       }, 1500);
@@ -75,7 +76,7 @@ export default function EditUsername() {
     }
 
     if (username === currentUser.displayName) {
-      setError("Username identique , veuillez en choisir un nouveau.");
+      setError(`${editDisplayName.error.similar[lang]}`);
       setTimeout(() => {
         setError("");
       }, 1500);
@@ -127,7 +128,7 @@ export default function EditUsername() {
           </div>
 
           <button className={`${G.btn_sub} ${G.btn_primary}`}>
-            {editProfil.email.btn[lang]}
+            {editProfil.displayName.btn[lang]}
           </button>
         </div>
       </form>

@@ -3,7 +3,6 @@ import { Exclamation } from "../../../../../assets/icons/Icon_svg";
 import { AuthContext } from "../../../../../context/auth/AuthProvider";
 import { LanguageContext } from "../../../../../context/language/LanguageContext";
 import { ModalContext } from "../../../../../context/modal/ModalProvider";
-//import { editProfil } from "../../../../../data/pages/admin/editProfil/editProfil";
 import { regexEmail } from "../../../../../data/regex";
 import Modal_body from "../../../../../engine/component/modal/Modal_body";
 import EditWithAuth from "../EditWithAuth";
@@ -41,32 +40,32 @@ export default function EditEmail() {
         setError(`${editEmail.error.emailInvalid[lang]}`);
         setTimeout(() => {
           setError("");
-        }, 1500);
+        }, 2200);
       }
 
       if (res.error.code === "auth/email-already-in-use") {
-        setError("email déjà utiliser");
+        setError(`${editEmail.error.alReadyUse[lang]}`);
         setTimeout(() => {
           setError("");
-        }, 1500);
+        }, 2200);
         return;
       }
 
       if (res.error.code === "auth/requires-recent-login") {
-        setInfo("Veuilez vous déconnecter , et vous reconnecter");
+        setInfo(`${editEmail.error.reAuthRequired[lang]}`);
         setTimeout(() => {
           setError("");
-        }, 1500);
+        }, 2200);
         return;
       }
 
       if (res.succes) {
-        setInfo("Email modifier avec succès");
+        setInfo(`${editEmail.error.reAuthRequired[lang]}`);
         closeModal();
         setEditMail(false);
         setTimeout(() => {
           setInfo("");
-        }, 1500);
+        }, 2200);
 
         return;
       }
@@ -78,27 +77,19 @@ export default function EditEmail() {
 
     const email = inputRef.current.value;
 
-    if (email === "" || email.lenght < 3) {
-      setError("Trois caractère minimum.");
-      setTimeout(() => {
-        setError("");
-      }, 1500);
-      return;
-    }
-
     if (!email.match(regexEmail)) {
       setError(`${editEmail.error.emailInvalid[lang]}`);
       setTimeout(() => {
         setError("");
-      }, 1500);
+      }, 2200);
       return;
     }
 
     if (email === currentUser.email) {
-      setError("email identique , veuillez en choisir un nouveau.");
+      setError(`${editEmail.error.emailInvalid[lang]}`);
       setTimeout(() => {
         setError("");
-      }, 1500);
+      }, 2200);
       return;
     }
     setEditMail(true);

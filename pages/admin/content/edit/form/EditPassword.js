@@ -4,10 +4,11 @@ import { Exclamation } from "../../../../../assets/icons/Icon_svg";
 import { AuthContext } from "../../../../../context/auth/AuthProvider";
 import { LanguageContext } from "../../../../../context/language/LanguageContext";
 import { ModalContext } from "../../../../../context/modal/ModalProvider";
-import { editProfil } from "../../../../../data/pages/admin/editProfil/editProfil";
+//import { editProfil } from "../../../../../data/pages/admin/editProfil/editProfil";
 import { regexAlphNum, regexEmail, regexPwd } from "../../../../../data/regex";
 import Modal_body from "../../../../../engine/component/modal/Modal_body";
 import EditWithAuth from "../EditWithAuth";
+import { editPass, editProfil } from "../lang/lang";
 
 import G from "./../../../../../Sass/abstract/global.module.scss";
 import S from "./../EditProfil.module.scss";
@@ -32,6 +33,25 @@ export default function EditPassword() {
       const res = await updatePwd(pwd);
 
       console.log(res);
+
+      //auth/user-not-found
+
+      if (res.error.code === "auth/user-not-found") {
+        setError(`${editPass.error.userNotFound[lang]}`);
+        setTimeout(() => {
+          setError("");
+        }, 2200);
+        return;
+      }
+
+      if (res.succes) {
+        setError(`${editPass.success.change[lang]}`);
+        setEditUser(false);
+        closeModal();
+        setTimeout(() => {
+          setInfo("");
+        }, 1500);
+      }
     }
   }
 
@@ -46,7 +66,7 @@ export default function EditPassword() {
     /*Error with pwd fields*/
 
     if (pwd === "") {
-      setError("Veuillez saisir un nouveau mot de passe");
+      setError(`${editPass.error.noValue[lang]}`);
       setTimeout(() => {
         setError("");
       }, 1500);
@@ -56,7 +76,7 @@ export default function EditPassword() {
     /*Error with confirm fields*/
 
     if (confirm === "") {
-      setErrorConfirm("Veuillez re-saisir votre nouveau mot de passe");
+      setErrorConfirm(`${editPass.error.noValue[lang]}`);
       setTimeout(() => {
         setErrorConfirm("");
       }, 1500);
@@ -65,7 +85,7 @@ export default function EditPassword() {
 
     /** Check both */
     if (confirm !== pwd) {
-      setErrorConfirm("Les mots de passe ne sont pas identiques");
+      setErrorConfirm(`${editPass.error.notIdentical[lang]}`);
       setTimeout(() => {
         setErrorConfirm("");
       }, 1500);
@@ -73,21 +93,21 @@ export default function EditPassword() {
     }
 
     /** Check format */
-    // if (!pwd.match(regexPwd)) {
-    //   setError("Le mot de passe n'est pas au bon format");
-    //   setTimeout(() => {
-    //     setError("");
-    //   }, 1500);
-    //   return;
-    // }
+    if (!pwd.match(regexPwd)) {
+      setError(`${editPass.error.regexPwd[lang]}`);
+      setTimeout(() => {
+        setError("");
+      }, 1500);
+      return;
+    }
 
-    // if (!confirm.match(regexPwd)) {
-    //   setError("Le mot de passe de confirmation n'est pas au bon format");
-    //   setTimeout(() => {
-    //     setError("");
-    //   }, 1500);
-    //   return;
-    // }
+    if (!confirm.match(regexPwd)) {
+      setErrorConfirm(`${editPass.error.regexConfirm[lang]}`);
+      setTimeout(() => {
+        setErrorConfirm("");
+      }, 1500);
+      return;
+    }
 
     setEditPwd(true);
     openModal("edit");
@@ -148,11 +168,7 @@ export default function EditPassword() {
             {editProfil.pwd.btn[lang]}
           </button>
         </div>
-        <p className={S.errorText}>
-          To check a password between 8 to 20 characters which contain at least
-          one lowercase letter, one uppercase letter, one numeric digit, and one
-          special character
-        </p>
+        <p className={S.errorText}>{editProfil.pwd.advertText[lang]}</p>
       </form>
 
       {/** We pass to the content of the modal box, the new value and the script
