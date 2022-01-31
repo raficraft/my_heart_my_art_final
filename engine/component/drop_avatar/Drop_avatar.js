@@ -22,7 +22,7 @@ export default function Drop_avatar() {
   function fileDrop(e) {
     e.preventDefault();
     const files = e.dataTransfer.files;
-    console.log(files);
+    //console.log(files);
 
     if (files.length) {
       handleFiles(files);
