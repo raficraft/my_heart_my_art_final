@@ -1,3 +1,5 @@
+export default test = "";
+
 export const editEmail = {
   error: {
     emailInvalid: {
