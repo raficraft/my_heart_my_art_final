@@ -19,8 +19,8 @@ export const editEmail = {
   },
   success: {
     change: {
-      FR: "E-mail modifié avec succès",
-      EN: "Email changed successfully",
+      FR: "E-mail modifié avec succès.",
+      EN: "Email changed successfully.",
     },
   },
 };
