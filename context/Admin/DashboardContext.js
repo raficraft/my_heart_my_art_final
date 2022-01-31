@@ -9,7 +9,6 @@ export default function DashboardProvider({ children }) {
   const [tabs, setTabs] = useState("profil");
 
   function handleTabs(target) {
-    console.log(target);
     setTabs(target);
   }
 

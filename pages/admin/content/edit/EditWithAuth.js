@@ -29,6 +29,8 @@ export default function EditWithAuth(props) {
   async function handleEdit(e) {
     e.preventDefault();
 
+    //manage auth/too-many-requests ????
+
     const pwd = inputRef.current.value;
 
     if (pwd === "") {
@@ -39,11 +41,18 @@ export default function EditWithAuth(props) {
       return;
     }
 
-    const res = await signin(currentUser.email, pwd, false);
-
-    if (res) {
+    try {
+      const res = await signin(currentUser.email, pwd, false);
       editProfil(e, newVal);
       await signin(currentUser.email, pwd, false);
+    } catch (error) {
+      if (error.code === "auth/wrong-password") {
+        setError(`Mauvais mot de passe.`);
+        setTimeout(() => {
+          setError("");
+        }, 2200);
+        return;
+      }
     }
   }
 

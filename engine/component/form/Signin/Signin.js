@@ -52,8 +52,6 @@ function Signin() {
       setError("");
       closeModal();
     } catch (err) {
-      console.dir(err);
-      console.log(err);
       if (err.code === "auth/wrong-password") {
         setError(errorForm.firebase.wrongPassword[lang]);
       }

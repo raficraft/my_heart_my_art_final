@@ -43,7 +43,7 @@ export default function EditUsername() {
       }
 
       if (res.succes) {
-        setError(`${editDisplayName.success.change[lang]}`);
+        setInfo(`${editDisplayName.success.change[lang]}`);
         setEditUser(false);
         closeModal();
         setTimeout(() => {
@@ -59,8 +59,6 @@ export default function EditUsername() {
     e.preventDefault();
 
     const username = inputRef.current.value;
-
-    console.log(username);
 
     if (username === "" || username.lenght < 3) {
       setError(`${editDisplayName.error.userNotFound[lang]}`);

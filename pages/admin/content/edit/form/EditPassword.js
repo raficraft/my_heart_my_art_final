@@ -30,10 +30,7 @@ export default function EditPassword() {
   async function handleEditPwd(e, pwd) {
     e.preventDefault();
     if (inputPwd && inputCompare && inputPwd !== inputCompare) {
-      console.log("yolo");
       const res = await updatePwd(pwd);
-
-      console.log(res);
 
       //auth/user-not-found
 
@@ -61,8 +58,6 @@ export default function EditPassword() {
 
     const pwd = inputPwd.current.value;
     const confirm = inputCompare.current.value;
-
-    console.log(pwd);
 
     /*Error with pwd fields*/
 

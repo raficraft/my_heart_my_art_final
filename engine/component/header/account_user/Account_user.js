@@ -17,8 +17,6 @@ export default function Account_user() {
 
   const router = useRouter();
 
-  console.log("user", currentUser);
-
   //Manage Modal
   function handle_modal(modal) {
     openModal(modal);
