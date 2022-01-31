@@ -1,7 +1,7 @@
 import React, { useContext, useState, useRef } from "react";
 import { accountForm } from "../../../../data/accountForm/accountForm";
 import G from "./../../../../Sass/abstract/global.module.scss";
-import F from "./../../../../engine/component/form/form.module.scss";
+import S from "./EditWithAuth.module.scss";
 import { ModalContext } from "../../../../context/modal/ModalProvider";
 import { AuthContext } from "../../../../context/auth/AuthProvider";
 import { LanguageContext } from "../../../../context/language/LanguageContext";
@@ -15,7 +15,7 @@ import { Exclamation } from "../../../../assets/icons/Icon_svg";
  */
 
 export default function EditWithAuth(props) {
-  console.log("????", F);
+  console.log("????", S);
   const { editProfil, newVal } = { ...props };
 
   const { closeModal } = useContext(ModalContext);
@@ -49,23 +49,23 @@ export default function EditWithAuth(props) {
   }
 
   return (
-    <div className={F.content}>
-      <header className={F.header}>
+    <div className={S.content}>
+      <header className={S.header}>
         <h1>{accountForm.signin.title[lang]}</h1>
 
         {/* Close BTN */}
         <div
           tabIndex="0"
           role="button"
-          className={F.close_modal}
+          className={S.close_modal}
           onClick={(e) => closeModal(e)}
           onKeyDown={(e) => closeModal(e)}
         >
-          <span className={F.cross}></span>
+          <span className={S.cross}></span>
         </div>
       </header>
       <form
-        className={F.account_user}
+        className={S.account_user}
         onSubmit={(e) => {
           handleEdit(e);
         }}
