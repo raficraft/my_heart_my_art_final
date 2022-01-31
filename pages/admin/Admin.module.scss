@@ -3,21 +3,30 @@
 
 .wrapper {
   @include flex(row, nowrap, space-between, center);
-  width: calc(#{$container_width});
-  flex: 1;
+  width: $container_width;
+
+  @media screen and (max-width: 1439px) {
+    width: calc(100% - 2rem);
+  }
+
   gap: 2rem;
   margin: 3rem 0;
-  @media screen and (max-width: 1439px) {
-    width: calc(100% - 4rem);
+  flex: 1;
+  @media screen and (max-width: 850px) {
+    width: 100%;
+    @include flex(row, wrap, space-between, center);
+    gap: 0;
   }
 
   aside {
     display: flex;
     align-self: stretch;
-    margin: 1rem 0;
-    min-width: 30%;
-    padding: 1rem;
+    width: 30%;
 
-    border-left: 1px solid $grey;
+    @media screen and (min-width: 850px) {
+      padding: 1rem;
+      margin: 1rem 0;
+      border-left: 1px solid $grey;
+    }
   }
 }

@@ -4,7 +4,7 @@
 .editProfil {
   @include flex(column, nowrap, space-between, flex-start);
   padding-bottom: 0;
-  flex: 1;
+  width: 100%;
 
   form {
     width: 100%;
@@ -16,12 +16,20 @@
     .errorText {
       margin: 1rem 0;
       color: $red;
+
+      @media screen and (max-width: 850px) {
+        text-align: center;
+      }
     }
   }
 
   .form_content {
     @include flex(row, wrap, space-between, center);
     width: 100%;
+
+    @media screen and (max-width: 850px) {
+      @include flex(column, wrap, center, center);
+    }
   }
 
   footer {
@@ -35,7 +43,7 @@
 
   .bloc_input {
     flex: 1;
-    margin: 1rem;
+    margin: 1rem 0;
     label {
       font-weight: bold;
       text-transform: uppercase;

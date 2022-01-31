@@ -29,30 +29,30 @@ export default function Nav_top() {
                   Blog
                 </a>
               </Link>
-              <Link href="/blog">
+              <Link href="/videos">
                 <a>
                   <Youtube_icon />
                   Videos
                 </a>
               </Link>
-              <Link href="/blog">
+              <Link href="/art">
                 <a>
                   <ImageGallery />
-                  my Art
+                  My art
                 </a>
               </Link>
             </>
           )}
           {isDesktop && (
             <>
-              <Link href="/blog">
+              <Link href="/heart">
                 <a>
                   <Heart_icon />
-                  my Heart
+                  My heart
                 </a>
               </Link>
 
-              <Link href="/blog">
+              <Link href="/contact">
                 <a>
                   <Email_icon />
                   Contact

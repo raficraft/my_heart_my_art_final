@@ -31,63 +31,65 @@ export default function Nav_alt({ children }) {
           </div>
         </header>
         <section className={S.nav_alt}>
-          <Link href="/blog">
-            <a
-              style={{ "--i": "1" }}
-              onClick={() => {
-                closeModal();
-              }}
-            >
-              <Article_icon />
-              Blog
-            </a>
-          </Link>
-          <Link href="/videos">
-            <a
-              style={{ "--i": "2" }}
-              onClick={() => {
-                closeModal();
-              }}
-            >
-              <Youtube_icon />
-              Videos
-            </a>
-          </Link>
-          <Link href="/art">
-            <a
-              style={{ "--i": "3" }}
-              onClick={() => {
-                closeModal();
-              }}
-            >
-              <ImageGallery />
-              My art
-            </a>
-          </Link>
+          <div className={S.nav_alt_container}>
+            <Link href="/blog">
+              <a
+                style={{ "--i": "1" }}
+                onClick={() => {
+                  closeModal();
+                }}
+              >
+                Blog
+                <Article_icon />
+              </a>
+            </Link>
+            <Link href="/videos">
+              <a
+                style={{ "--i": "2" }}
+                onClick={() => {
+                  closeModal();
+                }}
+              >
+                Videos
+                <Youtube_icon />
+              </a>
+            </Link>
+            <Link href="/art">
+              <a
+                style={{ "--i": "3" }}
+                onClick={() => {
+                  closeModal();
+                }}
+              >
+                My art
+                <ImageGallery />
+              </a>
+            </Link>
 
-          <Link href="/heart">
-            <a
-              style={{ "--i": "4" }}
-              onClick={() => {
-                closeModal();
-              }}
-            >
-              <Heart_icon />
-              My heart
-            </a>
-          </Link>
+            <Link href="/heart">
+              <a
+                style={{ "--i": "4" }}
+                onClick={() => {
+                  closeModal();
+                }}
+              >
+                My heart
+                <Heart_icon />
+              </a>
+            </Link>
 
-          <Link href="/contact">
-            <a
-              style={{ "--i": "5" }}
-              onClick={() => {
-                closeModal();
-              }}
-            >
-              <Email_icon />
-              Contact
-            </a>
-          </Link>
+            <Link href="/contact">
+              <a
+                style={{ "--i": "5" }}
+                onClick={() => {
+                  closeModal();
+                }}
+              >
+                Contact
+                <Email_icon />
+              </a>
+            </Link>
+          </div>
         </section>
       </div>
     </div>

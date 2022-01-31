@@ -1,14 +1,12 @@
-import React, { useContext, useRef, useState } from "react";
+import React from "react";
 import withAuth from "../../context/withAuth/WithAuth";
 import Head from "next/head";
 
 import L from "./../../Sass/Layout.module.scss";
 import G from "./../../Sass/abstract/global.module.scss";
-
 import S from "./Admin.module.scss";
 
 import Admin_header, { TabContent } from "./header/Admin_header";
-import { DashboardContext } from "../../context/Admin/DashboardContext";
 
 function DashBoard() {
   return (

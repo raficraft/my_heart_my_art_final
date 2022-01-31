@@ -10,6 +10,7 @@
   .content {
     flex: 1;
     @include flex(column, nowrap, flex-start, center);
+    position: relative;
     width: $container_width;
     @media screen and (max-width: 1439px) {
       width: calc(100% - 4rem);
@@ -38,28 +39,41 @@
     }
 
     .nav_alt {
-      @include flex(column, nowrap, center, center);
+      @include flex(column, nowrap, center, flex-end);
       flex: 1;
       width: 100%;
 
-      a {
-        font-size: 2rem;
-        line-height: 2rem;
-        @include flexCenter;
-        color: $black;
-        padding: calc(3 * #{$space}) 0;
-        opacity: 0;
-        animation-name: bottom_TO_origin;
-        animation-fill-mode: both;
-        animation-duration: $shortTime;
-        animation-delay: calc(var(--i) * 0.1s);
-        transition: $shortTime;
-        svg {
-          margin: 0 calc(3 * #{$space});
+      &_container {
+        @include flex(column, nowrap, center, space-between);
+        width: 70%;
+        margin-right: calc(#{$space} * 2);
+
+        @media screen and (max-width: 350px) {
+          width: 100%;
+          margin: 0;
         }
 
-        &:hover {
-          color: $blue;
+        a {
+          @include flex(row, nowrap, space-between, center);
+          font-size: 2rem;
+          line-height: 2rem;
+          color: $black;
+          padding: calc(3 * #{$space}) 0;
+          opacity: 0;
+          animation-name: right_TO_origin;
+          animation-fill-mode: both;
+          animation-duration: $shortTime;
+          animation-delay: calc(var(--i) * 0.1s);
+          transition: $shortTime;
+          svg {
+            margin: 0 calc(3 * #{$space});
+            min-width: 2rem;
+            min-height: 2rem;
+          }
+
+          &:hover {
+            color: $blue;
+          }
         }
       }
     }

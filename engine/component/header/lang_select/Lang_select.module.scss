@@ -30,7 +30,7 @@
     //box-shadow: $standartShadow;
     filter: drop-shadow(0px 0px 4px rgb(121, 121, 121));
     opacity: 0;
-    animation-name: translate;
+    animation-name: translate_by_left;
     animation-duration: $shortTime;
     animation-fill-mode: both;
 
@@ -85,7 +85,7 @@
   }
 }
 
-@keyframes translate {
+@keyframes translate_by_left {
   0% {
     opacity: 0;
     right: -108px;
@@ -93,5 +93,16 @@
   100% {
     opacity: 1;
     right: -8px;
+  }
+}
+
+@keyframes translate_by_right {
+  0% {
+    opacity: 0;
+    left: 0;
+  }
+  100% {
+    opacity: 1;
+    left: -8px;
   }
 }
