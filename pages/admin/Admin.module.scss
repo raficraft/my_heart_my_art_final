@@ -19,9 +19,11 @@
   }
 
   aside {
-    display: flex;
+    @include flex(column, wrap, center, center);
     align-self: stretch;
-    width: 30%;
+    max-width: 30%;
+    width: 100%;
+    box-sizing: border-box;
 
     @media screen and (min-width: 850px) {
       padding: 1rem;
