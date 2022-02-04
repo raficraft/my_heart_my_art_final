@@ -5,7 +5,7 @@ import useFirestore from "../../engine/hooks/firestore/useFirestore";
 import G from "./../../Sass/abstract/global.module.scss";
 import L from "./../../Sass/Layout.module.scss";
 
-export default function index() {
+export default function Index() {
   const addInputs = (el) => {
     if (el && !fields.current.includes(el)) {
       fields.current.push(el);
