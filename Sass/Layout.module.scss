@@ -22,3 +22,9 @@
     color: rgb(255, 0, 111) !important;
   }
 }
+
+.wrapper_edit {
+  width: 960px;
+  @include flex(column, wrap, center, center);
+  margin: auto;
+}
