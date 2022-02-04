@@ -1,6 +1,5 @@
 import React, { useRef, useContext } from "react";
 import { AuthContext } from "../../context/auth/AuthProvider";
-import { LanguageContext } from "../../context/language/LanguageContext";
 import useFirestore from "../../engine/hooks/firestore/useFirestore";
 
 import G from "./../../Sass/abstract/global.module.scss";
@@ -13,7 +12,7 @@ export default function index() {
     }
   };
 
-  const { validAuth, currentUser } = useContext(AuthContext);
+  const { currentUser } = useContext(AuthContext);
   const [currentMessage, setDocument, createDocument, delete_doc] =
     useFirestore("message", {});
   const fields = useRef([]);

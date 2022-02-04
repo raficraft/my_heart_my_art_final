@@ -1,26 +1,17 @@
 import Head from "next/head";
 import Link from "next/link";
-import { useContext, useRef, useState } from "react";
+import { useContext } from "react";
 import { AuthContext } from "../context/auth/AuthProvider";
 import { LanguageContext } from "../context/language/LanguageContext";
 
 import S from "./../Sass/Layout.module.scss";
 import G from "./../Sass/abstract/global.module.scss";
-import F from "./../pages/admin/content/edit/editProfil.module.scss";
-import { DbContext } from "./api/db";
-import { useEffect } from "react/cjs/react.development";
-import { onSnapshot, collection } from "firebase/firestore";
-import { db } from "../firebase/firebase.config";
 
 export default function Home() {
   const { lang } = useContext(LanguageContext);
   const { validAuth, currentUser } = useContext(AuthContext);
 
   /*** */
-  console.log("firebase user", currentUser);
-  console.log("Auth", validAuth);
-  console.log("lang", lang);
-  console.log("????, form", F);
 
   return (
     <>
