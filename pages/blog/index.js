@@ -1,5 +1,5 @@
 import React, { useRef, useContext } from "react";
-import { AuthContext } from "../../context/auth/AuthProvider";
+import { AuthContext } from "../../engine/context/auth/AuthProvider";
 import useFirestore from "../../engine/hooks/firestore/useFirestore";
 
 import G from "./../../Sass/abstract/global.module.scss";

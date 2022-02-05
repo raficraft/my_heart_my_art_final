@@ -1,5 +1,5 @@
 import React from "react";
-import withAuth from "../../context/withAuth/WithAuth";
+import withAuth from "../../engine/context/withAuth/WithAuth";
 import Head from "next/head";
 
 import S from "./Admin.module.scss";

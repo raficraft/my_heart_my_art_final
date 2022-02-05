@@ -1,8 +1,8 @@
 import React, { useContext, useState, useRef } from "react";
 import { Exclamation } from "../../../../../assets/icons/Icon_svg";
-import { AuthContext } from "../../../../../context/auth/AuthProvider";
-import { LanguageContext } from "../../../../../context/language/LanguageContext";
-import { ModalContext } from "../../../../../context/modal/ModalProvider";
+import { AuthContext } from "../../../../../engine/context/auth/AuthProvider";
+import { LanguageContext } from "../../../../../engine/context/language/LanguageContext";
+import { ModalContext } from "../../../../../engine/context/modal/ModalProvider";
 import {
   editEmail,
   editProfil,
