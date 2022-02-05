@@ -78,17 +78,17 @@ export default function EditWithAuth(props) {
           handleEdit(e);
         }}
       >
-        <p className={G.errorText}>
+        <p className="errotText">
           Veuillez saisir votre mot de passe pour valider ce changement.
         </p>
-        <div className={G.bloc_input}>
+        <div className="bloc_input">
           <label htmlFor="pwd">{accountForm.signin.pwd[lang]}</label>
 
           <input type="password" name="pwd" id="pwd" ref={inputRef} />
           {/*Manage error or info message */}
           {error && (
-            <div className={`${G.errorText} ${G.input_infoBubble}`}>
-              <span className={G.icon}>
+            <div className="error_text info_bubble">
+              <span className="icon">
                 <Exclamation></Exclamation>
               </span>
               <p>{error}</p>
@@ -97,7 +97,7 @@ export default function EditWithAuth(props) {
         </div>
 
         {/* Sub button */}
-        <button className={`${G.btn_big} ${G.btn_alert}`}>
+        <button className="btn_sub btn_big" type="submit">
           {loading ? "loading" : "Apliquer la modification"}
         </button>
       </form>

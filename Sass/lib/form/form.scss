@@ -1,0 +1,76 @@
+.bloc_input {
+  @include flex(column, nowrap, center, flex-start);
+  margin: 0.5rem 0;
+  position: relative;
+  @media screen and (max-width: 700px) {
+    @include flex(row, wrap, center, center);
+  }
+  input[type="text"],
+  input[type="password"],
+  textarea {
+    border: 2px solid $grey;
+    height: 2rem;
+    padding: calc(#{$space} * 2.5) 0;
+    text-indent: calc(#{$space} * 1.5);
+    color: $black;
+    transition: $shortTime;
+    box-sizing: border-box;
+    border-radius: $smallRadius;
+    width: 100%;
+
+    @include on-event {
+      border: 2px solid $blue;
+    }
+  }
+
+  textarea {
+    min-height: 260px;
+    padding: 1rem;
+    font-size: 1rem;
+  }
+
+  label {
+    font-weight: bold;
+    width: 100%;
+    margin: 0 0 $space 0;
+
+    @media screen and (max-width: 850px) {
+      text-align: center;
+    }
+  }
+}
+
+.bloc_input_row {
+  @include flex(row, wrap, flex-start, center);
+  margin: 0.5rem 0;
+  input[type="text"],
+  input[type="password"] {
+    height: 2rem;
+    padding: calc(#{$space} * 2.5) 0;
+    text-indent: calc(#{$space} * 1.5);
+    border: 2px solid $grey;
+    color: $black;
+    transition: $shortTime;
+    box-sizing: border-box;
+    border-radius: $smallRadius;
+    width: 100%;
+
+    @include on-event {
+      border: 2px solid $blue;
+    }
+  }
+
+  label {
+    font-weight: bold;
+    margin: 0 2rem 0 0;
+  }
+}
+
+.bloc_checked {
+  @include flex(row, nowrap, flex-start, center);
+  margin: calc(#{$space} * 1) 0 0 0;
+
+  input {
+    margin-right: calc(#{$space} * 1.5);
+  }
+}

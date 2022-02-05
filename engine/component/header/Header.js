@@ -17,7 +17,7 @@ function Header() {
   return (
     <header className={`${S.wrapper} `}>
       {/* Header Content */}
-      <div className={`${S.content} ${G.primary_content}`}>
+      <div className={`${S.content} primary_content`}>
         {/* Home Button */}
         <Link href="/" className={S.home_button}>
           <a className={S.home_button}>

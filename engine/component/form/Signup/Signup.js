@@ -90,21 +90,21 @@ function Signup() {
       >
         {/* Field Email */}
 
-        <div className={G.bloc_input}>
+        <div className="bloc_input">
           <label htmlFor="email">{accountForm.signup.email[lang]}</label>
           <input type="text" ref={addInputs} name="email" id="email" />
         </div>
 
         {/* Field PWD */}
 
-        <div className={G.bloc_input}>
+        <div className="bloc_input">
           <label htmlFor="pwd">{accountForm.signup.pwd[lang]}</label>
           <input type="password" ref={addInputs} name="pwd" id="pwd" />
         </div>
 
         {/* Confirm  PWD */}
 
-        <div className={G.bloc_input}>
+        <div className="bloc_input">
           <label htmlFor="confirmPsw">
             {accountForm.signup.confirmPwd[lang]}
           </label>
@@ -119,18 +119,18 @@ function Signup() {
         {/* Error message */}
 
         <div className={S.errorMessage}>
-          <p className={G.textWarning}>{error}</p>
+          <p className="textWarning">{error}</p>
         </div>
 
         {/* Sub button */}
-        <button className={`${G.btn_big} ${G.btn_sub}`}>
+        <button className="btn_sub btn_big" type="submit">
           {accountForm.signup.button[lang]}
         </button>
         <p
           onClick={(e) => {
             switch_modal(e);
           }}
-          className={G.text_switch}
+          className="text_switch"
         >
           {accountForm.signup.alReadyAccount[lang]}
         </p>

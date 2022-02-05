@@ -116,7 +116,7 @@ export default function EditPassword() {
         }}
       >
         <div className={S.form_content}>
-          <div className={`${G.bloc_input} ${S.bloc_input}`}>
+          <div className={`bloc_input ${S.bloc_input}`}>
             <input
               type="password"
               id="password"
@@ -126,16 +126,16 @@ export default function EditPassword() {
             />
             {/*Manage error or info message */}
             {error && (
-              <div className={`${G.errorText} ${G.input_infoBubble}`}>
-                <span className={G.icon}>
+              <div className={`erroText input_infoBubble`}>
+                <span className="icon">
                   <Exclamation></Exclamation>
                 </span>
                 <p>{error}</p>
               </div>
             )}
             {info && (
-              <div className={`${G.infoText} ${G.input_infoBubble}`}>
-                <span className={G.icon}>
+              <div className={`textInfo input_infoBubble`}>
+                <span className="icon">
                   <Exclamation></Exclamation>
                 </span>
                 <p>{info}</p>
@@ -143,7 +143,7 @@ export default function EditPassword() {
             )}
           </div>
 
-          <div className={`${G.bloc_input} ${S.bloc_input}`}>
+          <div className={`bloc_input ${S.bloc_input}`}>
             <input
               type="password"
               id="confirmPwd"
@@ -152,15 +152,15 @@ export default function EditPassword() {
               ref={inputCompare}
             />
             {errorConfirm && (
-              <div className={`${G.errorText} ${G.input_infoBubble}`}>
-                <span className={G.icon}>
+              <div className={`erroText input_infoBubble`}>
+                <span className="icon">
                   <Exclamation></Exclamation>
                 </span>
                 <p>{errorConfirm}</p>
               </div>
             )}
           </div>
-          <button className={`${G.btn_sub} ${G.btn_primary}`} type="submit">
+          <button className="btn_sub btn_primary" type="submit">
             {editProfil.pwd.btn[lang]}
           </button>
         </div>

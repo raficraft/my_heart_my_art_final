@@ -1,5 +1,10 @@
-@import "./abstract/function";
-@import "./abstract/variables";
+.primary_content {
+  width: $container_width;
+
+  @media screen and (max-width: 1439px) {
+    width: calc(100% - 2rem);
+  }
+}
 
 .layout {
   position: relative;
@@ -22,6 +27,8 @@
     color: rgb(255, 0, 111) !important;
   }
 }
+
+//For firestore test remove
 
 .wrapper_edit {
   width: 960px;

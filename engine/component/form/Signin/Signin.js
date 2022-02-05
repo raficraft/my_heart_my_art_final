@@ -87,39 +87,39 @@ function Signin() {
       >
         {/* Field Email */}
 
-        <div className={G.bloc_input}>
+        <div className="bloc_input">
           <label htmlFor="email">{accountForm.signin.email[lang]}</label>
           <input type="text" name="email" id="email" ref={addInputs} />
         </div>
 
         {/* Field PWD */}
 
-        <div className={G.bloc_input}>
+        <div className="bloc_input">
           <label htmlFor="pwd">{accountForm.signin.pwd[lang]}</label>
           <input type="password" name="pwd" id="pwd" ref={addInputs} />
         </div>
 
         {/* Remember checkbox */}
 
-        <div className={G.bloc_checked}>
+        <div className="bloc_checked">
           <input type="checkbox" id="remmber" name="remember" ref={remember} />
           <label htmlFor="remember">{accountForm.signin.checked[lang]}</label>
         </div>
 
         {/* Error Message */}
         <div className={S.errorMessage}>
-          <p className={G.textWarning}>{error}</p>
+          <p className="errorText">{error}</p>
         </div>
 
         {/* Sub button */}
-        <button className={`${G.btn_big} ${G.btn_sub}`}>
+        <button className="btn_sub btn_big" type="submit">
           {accountForm.signin.button[lang]}
         </button>
         <p
           onClick={(e) => {
             switch_modal(e);
           }}
-          className={G.text_switch}
+          className="text_switch"
         >
           {accountForm.signin.switchForm[lang]}
         </p>

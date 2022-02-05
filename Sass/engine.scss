@@ -1,3 +1,9 @@
 @import "./abstract/function.scss";
 @import "./abstract/variables.scss";
 @import "./abstract/reset.scss";
+
+@import "./lib/global.scss";
+
+@import "./lib/atomic/tex.scss";
+@import "./lib/form/form.scss";
+@import "./lib/form/btn.scss";

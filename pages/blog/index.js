@@ -3,7 +3,6 @@ import { AuthContext } from "../../context/auth/AuthProvider";
 import useFirestore from "../../engine/hooks/firestore/useFirestore";
 
 import G from "./../../Sass/abstract/global.module.scss";
-import L from "./../../Sass/Layout.module.scss";
 
 export default function Index() {
   const addInputs = (el) => {
@@ -80,20 +79,20 @@ export default function Index() {
   }
 
   return (
-    <main className={L.wrapper}>
-      <section className={G.primary_content}>
+    <main className="wrapper">
+      <section className="primary_content">
         <h1>Blog Page</h1>
         <h2>Les derniers message envoyé en BDD</h2>
-        <section className={L.wrapper_edit}>
+        <section className="wrapper_edit">
           <form
             onSubmit={(e) => {
               postMessage(e);
             }}
           >
-            <div className={G.bloc_input}>
+            <div className="bloc_input">
               <label>Add message</label>
               <textarea cols="96" ref={addRef}></textarea>
-              <button className={`${G.btn_big} ${G.btn_sub}`} type="submit">
+              <button className="btn_sub btn_big" type="submit">
                 Add Article
               </button>
             </div>

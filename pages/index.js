@@ -4,9 +4,6 @@ import { useContext } from "react";
 import { AuthContext } from "../context/auth/AuthProvider";
 import { LanguageContext } from "../context/language/LanguageContext";
 
-import S from "./../Sass/Layout.module.scss";
-import G from "./../Sass/abstract/global.module.scss";
-
 export default function Home() {
   const { lang } = useContext(LanguageContext);
   const { validAuth, currentUser } = useContext(AuthContext);
@@ -21,14 +18,14 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={S.wrapper}>
-        <section className={`${S.content} ${G.primary_content}`}>
+      <main className="wrapper">
+        <section className="content primary_content">
           <h1>NEXT.JS Laboratory hosting with vercel app</h1>
 
           <h1>{lang && lang}</h1>
           {validAuth && currentUser && (
             <Link href="/admin">
-              <a className={S.oldLink}>
+              <a className="oldLink">
                 <h1>Go to dashBoard</h1>
               </a>
             </Link>

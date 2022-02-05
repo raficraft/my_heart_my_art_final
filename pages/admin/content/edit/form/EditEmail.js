@@ -107,7 +107,7 @@ export default function EditEmail() {
         }}
       >
         <div className={S.form_content}>
-          <div className={`${G.bloc_input} ${S.bloc_input}`}>
+          <div className={`bloc_input ${S.bloc_input}`}>
             <label htmlFor="email">{editProfil.email.label[lang]}</label>
             <input
               type="text"
@@ -124,16 +124,16 @@ export default function EditEmail() {
 
             {/*Manage error or info message */}
             {error && (
-              <div className={`${G.errorText} ${G.input_infoBubble}`}>
-                <span className={G.icon}>
+              <div className="errorText input_infoBubble">
+                <span className="icon">
                   <Exclamation></Exclamation>
                 </span>
                 <p>{error}</p>
               </div>
             )}
             {info && (
-              <div className={`${G.infoText} ${G.input_infoBubble}`}>
-                <span className={G.icon}>
+              <div className="textInfo input_infoBubble">
+                <span className="icon">
                   <Exclamation></Exclamation>
                 </span>
                 <p>{info}</p>
@@ -141,7 +141,7 @@ export default function EditEmail() {
             )}
           </div>
 
-          <button className={`${G.btn_sub} ${G.btn_primary}`} type="submit">
+          <button className="btn_sub btn_primary" type="submit">
             {editProfil.email.btn[lang]}
           </button>
         </div>

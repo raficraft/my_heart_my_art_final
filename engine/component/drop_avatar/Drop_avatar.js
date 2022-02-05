@@ -102,18 +102,13 @@ export default function Drop_avatar() {
       <input
         type="file"
         id="load_file"
-        className={G.hidden}
+        className="hidden"
         onChange={handleFiles}
       />
       {errorMessage && (
         <>
-          <p className={`${G.errorText} ${S.errorText}`}>
-            Format d'image invalid.
-          </p>
-          <p className={`${G.errorText} ${S.errorText}`}>
-            {" "}
-            Format autorisé [ jpeg - jpg - png ]
-          </p>
+          <p className="errorText">Format d'image invalid.</p>
+          <p className="errorText"> Format autorisé [ jpeg - jpg - png ]</p>
         </>
       )}
     </div>

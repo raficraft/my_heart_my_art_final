@@ -2,8 +2,6 @@ import React from "react";
 import withAuth from "../../context/withAuth/WithAuth";
 import Head from "next/head";
 
-import L from "./../../Sass/Layout.module.scss";
-import G from "./../../Sass/abstract/global.module.scss";
 import S from "./Admin.module.scss";
 
 import Admin_header, { TabContent } from "./header/Admin_header";
@@ -17,9 +15,9 @@ function DashBoard() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={L.wrapper}>
+      <main className="wrapper">
         <Admin_header></Admin_header>
-        <section className={`${G.primary_content}`}>
+        <section className="primary_content">
           <div className={` ${S.wrapper}`}>
             <TabContent></TabContent>
             <aside>

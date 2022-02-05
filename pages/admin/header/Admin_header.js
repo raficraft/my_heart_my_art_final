@@ -30,7 +30,7 @@ function Admin_header() {
   return (
     <>
       <section className={S.wrapper}>
-        <header className={` ${G.primary_content} ${S.profil_header}`}>
+        <header className={` primary_content ${S.profil_header}`}>
           <form className={`${S.profil_header__form}`}>
             <div className={`${S.profil_header__upload}`}>
               <AccountCircle
@@ -45,7 +45,7 @@ function Admin_header() {
           </div>
         </header>
         <div className={S.nav_wrapper}>
-          <nav className={` ${G.primary_content} ${S.nav_admin}`}>
+          <nav className={`primary_content ${S.nav_admin}`}>
             <Tabs className={S.test}>
               <button
                 onClick={() => {
