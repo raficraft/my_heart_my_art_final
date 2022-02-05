@@ -1,9 +1,10 @@
 import S from "./../Form.module.scss";
-import G from "./../../../../Sass/abstract/global.module.scss";
 import { useContext, useState, useRef } from "react";
-import { ModalContext } from "../../../../context/modal/ModalProvider";
-import { AuthContext } from "../../../../context/auth/AuthProvider";
-import { LanguageContext } from "../../../../context/language/LanguageContext";
+
+import { ModalContext } from "../../../../engine/context/modal/ModalProvider";
+import { AuthContext } from "../../../../engine/context/auth/AuthProvider";
+import { LanguageContext } from "../../../../engine/context/language/LanguageContext";
+
 import { errorForm } from "../../../../data/errorForm/errorForm";
 import { accountForm } from "../../../../data/accountForm/accountForm";
 

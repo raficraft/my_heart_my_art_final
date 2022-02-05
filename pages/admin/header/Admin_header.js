@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 
-import { DashboardContext } from "../../../context/Admin/DashboardContext";
-import { LanguageContext } from "../../../context/language/LanguageContext";
-import { ModalContext } from "../../../context/modal/ModalProvider";
+import { DashboardContext } from "../../../engine/context/Admin/DashboardContext";
+import { LanguageContext } from "../../../engine/context/language/LanguageContext";
+import { ModalContext } from "../../../engine/context/modal/ModalProvider";
 
 import { nav_admin } from "../../../data/pages/admin/editProfil/nav_admin";
 
@@ -12,8 +12,8 @@ import Modal_body from "../../../engine/component/modal/Modal_body";
 import EditProfil from "../content/edit/EditProfil";
 import UserProfil from "../content/profil/UserProfil";
 
-import G from "./../../../Sass/abstract/global.module.scss";
 import S from "./Admin_header.module.scss";
+
 import {
   AccountCircle,
   Edit_icon,

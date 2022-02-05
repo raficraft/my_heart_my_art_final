@@ -1,8 +1,8 @@
 import Head from "next/head";
 import Link from "next/link";
 import { useContext } from "react";
-import { AuthContext } from "../context/auth/AuthProvider";
-import { LanguageContext } from "../context/language/LanguageContext";
+import { AuthContext } from "../engine/context/auth/AuthProvider";
+import { LanguageContext } from "../engine/context/language/LanguageContext";
 
 export default function Home() {
   const { lang } = useContext(LanguageContext);

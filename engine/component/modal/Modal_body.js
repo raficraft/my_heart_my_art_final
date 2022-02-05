@@ -1,6 +1,6 @@
 import S from "./Modal.module.scss";
 import { useContext } from "react";
-import { ModalContext } from "../../../context/modal/ModalProvider";
+import { ModalContext } from "../../../engine/context/modal/ModalProvider";
 import Portal from "../../utils/portal";
 
 function Modal_body({ children }) {
